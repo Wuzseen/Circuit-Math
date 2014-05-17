@@ -96,9 +96,18 @@ public class NodeConnector : MonoBehaviour {
 		if(activeLine != null) {
 			Destroy (activeLine.gameObject);
 		}
+
+		NodeConnection ncToBreak = null;
+		foreach(NodeConnection nodeConnect in connections.Keys) {
+			if(nodeConnect.NodeInConnection(nc.a) || nodeConnect.NodeInConnection(nc.b))
+				ncToBreak = nodeConnect;
+		}
+		if(ncToBreak != null)
+			UnregsiterConnection(ncToBreak);
 		if(connections.ContainsKey(nc)) {
 			return;
 		}
+
 		NodeLine lr = NodeLine.CreateNewLine(nc.a.transform,nc.b.transform,nc.a.ParentNode.NodeColor,nc.b.ParentNode.NodeColor);
 		connections.Add(nc,lr);
 	}

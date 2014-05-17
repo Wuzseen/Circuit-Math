@@ -21,6 +21,7 @@ public class GoalNode : GameNode {
 			foreach(GameNode node in this.inputNodes) {
 				sum += node.NodeValue;
 			}
+			print (sum);
 			if(sum == GoalValue) {
 				return 1;
 			}

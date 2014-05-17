@@ -15,10 +15,11 @@ public class SolverButton : MonoBehaviour {
 
 	void OnPress (bool isDown) {
 		if(isDown == false) {
-			if(Game.Instance.IsSolved())
+			if(Game.Instance.IsSolved()) {
 				print ("SOLVED");
-			else
+			} else {
 				print ("WRONG");
+			}
 		}
 	}
 }
