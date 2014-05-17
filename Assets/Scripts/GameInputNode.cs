@@ -7,7 +7,7 @@ public class GameInputNode : GameNode {
 	
 	// Use this for initialization
 	protected override void Start () {
-		this.NodeValue = inputValue;	
+		this.NodeValue = inputValue;
 		label.text = this.NodeValue.ToString();
 		base.Start();
 	}

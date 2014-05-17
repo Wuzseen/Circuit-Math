@@ -41,6 +41,7 @@ public class NodeConnector : MonoBehaviour {
 	void Awake () {
 		DragNode.OnConnectionMade += NewConnection;
 		DragNode.OnConnectionStart += StartConnection;
+		DragNode.OnPrematureEnd += EndLineDrag;
 	}
 
 	bool CompatibleNodes(DragNode a, DragNode b) {
@@ -54,6 +55,12 @@ public class NodeConnector : MonoBehaviour {
 			return true;
 		}
 		return false;
+	}
+
+	void EndLineDrag(NodeConnectionArgs args) {
+		if(activeLine != null) {
+			Destroy (activeLine.gameObject);
+		}
 	}
 
 	void StartConnection(NodeConnectionArgs args) {
@@ -74,7 +81,11 @@ public class NodeConnector : MonoBehaviour {
 
 	public void NewConnection(NodeConnectionArgs args) {
 		if(CompatibleNodes(args.StartNode,args.EndNode)) {
-			args.EndNode.ParentNode.AddInputNode(args.StartNode.ParentNode);
+			if(args.StartNode.IsInput == false) {
+				args.EndNode.ParentNode.AddInputNode(args.StartNode.ParentNode);
+			} else {
+				args.StartNode.ParentNode.AddInputNode(args.EndNode.ParentNode);
+			}
 			RegisterConnection(new NodeConnection(args.StartNode,args.EndNode));
 		} else {
 			print ("Not connectible, input -> output and output -> input only between two unique nodes.");
@@ -97,15 +108,17 @@ public class NodeConnector : MonoBehaviour {
 			Destroy (activeLine.gameObject);
 		}
 		NodeLine lr = connections[nc];
+		if(nc.a.IsInput == false) {
+			nc.b.ParentNode.RemoveInputNode(nc.a.ParentNode);
+		} else {
+			nc.a.ParentNode.RemoveInputNode(nc.b.ParentNode);
+		}
 		connections.Remove(nc);
 		Destroy (lr.gameObject);
 	}
 
 	// Update is called once per frame
 	void OnPress(bool isDown) {
-		if(!isDown) {
-			print ("NYAH");
-		} 
 	}
 
 	void OnDrop() {

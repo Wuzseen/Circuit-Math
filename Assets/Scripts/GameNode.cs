@@ -55,14 +55,17 @@ public class GameNode : MonoBehaviour {
 	}
 
 	public void AddInputNode(GameNode value) {
-		print ("ADDING CONNECTION");
 		if(inputNodes.Contains(value) == false) {
+//			print (string.Format("Adding {0} (from {2}) to {1}'s input nodes",value.NodeValue.ToString(),this.name,value.name));
 			inputNodes.Add(value);
 		}
 	}
 
 	public void RemoveInputNode(GameNode node) {
-		inputNodes.Remove(node);
+		if(inputNodes.Contains(node) == true) {
+//			print (string.Format("Removing {0} to {1}'s input nodes",node.NodeValue.ToString(),this.name));
+			inputNodes.Remove(node);
+		}
 	}
 
 	public void DragToggle() {

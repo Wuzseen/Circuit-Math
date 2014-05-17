@@ -39,6 +39,7 @@ public class DragNode : MonoBehaviour {
 	public delegate void NodeConnectionEventHandler(NodeConnectionArgs args);
 	public static event NodeConnectionEventHandler OnConnectionMade;
 	public static event NodeConnectionEventHandler OnConnectionStart;
+	public static event NodeConnectionEventHandler OnPrematureEnd;
 	// Use this for initialization
 
 	void Start () {
@@ -56,6 +57,8 @@ public class DragNode : MonoBehaviour {
 			if(OnConnectionStart != null) {
 				OnConnectionStart(new NodeConnectionArgs(this,null));
 			}
+		} else {
+			OnPrematureEnd(new NodeConnectionArgs(this,null));
 		}
 	}
 

@@ -42,13 +42,39 @@ MonoBehaviour:
   mSprites:
   - name: nodecircle
     x: 0
-    y: 64
+    y: 62
     width: 64
     height: 64
     borderLeft: 0
     borderRight: 0
     borderTop: 0
     borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: protoButtonDown
+    x: 0
+    y: 127
+    width: 64
+    height: 64
+    borderLeft: 6
+    borderRight: 6
+    borderTop: 6
+    borderBottom: 6
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: protoButtonUp
+    x: 0
+    y: 192
+    width: 64
+    height: 64
+    borderLeft: 6
+    borderRight: 6
+    borderTop: 6
+    borderBottom: 6
     paddingLeft: 0
     paddingRight: 0
     paddingTop: 0

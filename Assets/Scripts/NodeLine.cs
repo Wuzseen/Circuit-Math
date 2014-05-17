@@ -3,7 +3,7 @@ using System.Collections;
 
 public class NodeLine : MonoBehaviour {
 	public static NodeLine CreateNewLine(Transform a, Transform b, Color c1, Color c2) {
-		GameObject o = (GameObject)Instantiate(new GameObject());
+		GameObject o = new GameObject();
 		o.layer = 8; // GUI/gamelayer
 		NodeLine ret = o.AddComponent<NodeLine>();
 		ret.lr = o.AddComponent<LineRenderer>();
@@ -38,8 +38,12 @@ public class NodeLine : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if(lr != null) {
-			lr.SetPosition(0,_a.position);
-			lr.SetPosition(1,_b.position);
+			Vector3 p1 = _a.position;
+			p1.z = 0;
+			Vector3 p2 = _b.position;
+			p2.z = 0;
+			lr.SetPosition(0,p1);
+			lr.SetPosition(1,p2);
 		}
 	}
 }
