@@ -122,6 +122,8 @@ public class NodeConnector : MonoBehaviour {
 		} else {
 			nc.a.ParentNode.RemoveInputNode(nc.b.ParentNode);
 		}
+		nc.a.ResetScale();
+		nc.b.ResetScale();
 		connections.Remove(nc);
 		Destroy (lr.gameObject);
 	}

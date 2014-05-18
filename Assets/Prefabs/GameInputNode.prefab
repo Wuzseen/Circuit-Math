@@ -8,7 +8,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 400000}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: OutputNodes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26,6 +26,7 @@ GameObject:
   - 114: {fileID: 11400004}
   - 135: {fileID: 13500000}
   - 114: {fileID: 11400000}
+  - 114: {fileID: 11400012}
   m_Layer: 5
   m_Name: Out1
   m_TagString: Untagged
@@ -87,7 +88,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100002}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .180353895, y: .0946603715, z: 0}
+  m_LocalPosition: {x: .180353895, y: 0, z: 0}
   m_LocalScale: {x: .00215517241, y: .00215517241, z: .00215517241}
   m_Children: []
   m_Father: {fileID: 400000}
@@ -109,8 +110,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100006}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -618.139038, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -705.264832, y: 276.815643, z: 0}
+  m_LocalScale: {x: 1.00007999, y: 1.00007999, z: 1.00007999}
   m_Children:
   - {fileID: 400000}
   - {fileID: 400004}
@@ -126,6 +127,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 472d7064702abad4fbd6d0038f846ca4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  NodeID: 0
+  IsInput: 0
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -143,7 +146,7 @@ MonoBehaviour:
   inputNodeParent: {fileID: 0}
   outputNodeParent: {fileID: 400000}
   label: {fileID: 11400008}
-  inputValue: 6
+  inputValue: 12
 --- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -247,7 +250,7 @@ MonoBehaviour:
   keepCrispWhenShrunk: 1
   mTrueTypeFont: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
   mFont: {fileID: 0}
-  mText: 4
+  mText: 12
   mFontSize: 61
   mFontStyle: 0
   mAlignment: 0
@@ -296,7 +299,7 @@ MonoBehaviour:
     target: {fileID: 0}
     relative: 1
     absolute: 0
-  updateAnchors: 1
+  updateAnchors: 0
   mColor: {r: 0, g: .786764741, b: .591430128, a: 1}
   mPivot: 4
   mWidth: 100
@@ -319,6 +322,45 @@ MonoBehaviour:
   rightType: 1
   bottomType: 1
   topType: 1
+--- !u!114 &11400012
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75e7459110b9666449485c40f25362a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  method: 0
+  style: 0
+  animationCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 1
+      tangentMode: 0
+    - time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  ignoreTimeScale: 1
+  delay: 0
+  duration: 1
+  steeperCurves: 0
+  tweenGroup: 0
+  onFinished: []
+  eventReceiver: {fileID: 0}
+  callWhenFinished: 
+  from: {x: .00215517241, y: .00215517241, z: .00215517241}
+  to: {x: .00215517241, y: .00215517241, z: .00215517241}
+  updateTable: 0
 --- !u!135 &13500000
 SphereCollider:
   m_ObjectHideFlags: 1

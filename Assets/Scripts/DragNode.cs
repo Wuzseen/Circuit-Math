@@ -40,26 +40,32 @@ public class DragNode : MonoBehaviour {
 	public static event NodeConnectionEventHandler OnConnectionMade;
 	public static event NodeConnectionEventHandler OnConnectionStart;
 	public static event NodeConnectionEventHandler OnPrematureEnd;
+	private TweenScale scaleTween;
 	// Use this for initialization
 
 	void Start () {
+		scaleTween = GetComponent<TweenScale>();
+		scaleTween.to = this.transform.localScale * 1.2f;
+		scaleTween.duration = .3f;
+		scaleTween.enabled = false;
 		NodeID = nodeIDCount;
 		nodeIDCount++;
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
 	}
 
 	void OnPress (bool isDown) {
 		if(isDown) {
 			if(OnConnectionStart != null) {
 				OnConnectionStart(new NodeConnectionArgs(this,null));
+				scaleTween.PlayForward();
 			}
 		} else {
 			OnPrematureEnd(new NodeConnectionArgs(this,null));
+//			scaleTween.PlayReverse();
 		}
+	}
+
+	public void ResetScale() {
+		scaleTween.PlayReverse();
 	}
 
 	void OnDrop (GameObject drag) {
@@ -67,6 +73,7 @@ public class DragNode : MonoBehaviour {
 			DragNode other = (DragNode)drag.GetComponent(typeof(DragNode));
 			if(other != null && other != this) {
 				OnConnectionMade(new NodeConnectionArgs(other,this));
+				scaleTween.PlayForward();
 			}
 		}
 	}
