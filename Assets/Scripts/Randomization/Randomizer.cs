@@ -33,7 +33,7 @@ public class Randomizer : MonoBehaviour {
 		AddOperator(op, nodePos1.position);
 		EquationOperand equation = GetRandomEquation(solution, op);
 		Debug.Log("Initial " + equation.ToString());
-		int numOperators = Random.Range(1, 3);
+		int numOperators = Random.Range(1, maxNumOperators + 1);
 		for(int i = 1; i < numOperators; i++){
 			int operandNumber = Random.Range(0, 2);
 			EquationOperand eo; 
