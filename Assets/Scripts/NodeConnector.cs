@@ -35,6 +35,7 @@ public class NodeConnection {
 public class NodeConnector : MonoBehaviour {
 	private Dictionary<NodeConnection,NodeLine> connections = new Dictionary<NodeConnection, NodeLine>();
 	private NodeLine activeLine;
+	private DragNode activeDragNode;
 	public GameObject lineRendererPrefab;
 //	private List<NodeConnection> connections = new List<NodeConnection>();
 	// Use this for initialization
@@ -77,6 +78,7 @@ public class NodeConnector : MonoBehaviour {
 			Destroy (activeLine.gameObject);
 		}
 		activeLine = NodeLine.CreateNewLine(args.StartNode.transform,UICursor.instance.transform,args.StartNode.ParentNode.NodeColor,Color.green);
+		activeDragNode = args.StartNode;
 	}
 
 	public void NewConnection(NodeConnectionArgs args) {
@@ -128,13 +130,10 @@ public class NodeConnector : MonoBehaviour {
 		Destroy (lr.gameObject);
 	}
 
-	// Update is called once per frame
-	void OnPress(bool isDown) {
-	}
-
 	void OnDrop() {
 		if(activeLine != null) {
 			Destroy (activeLine.gameObject);
+			activeDragNode.ResetScale();
 		}
 	}
 }

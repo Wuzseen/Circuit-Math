@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class NodeLine : MonoBehaviour {
 	public static NodeLine CreateNewLine(Transform a, Transform b, Color c1, Color c2) {
@@ -43,17 +44,23 @@ public class NodeLine : MonoBehaviour {
 			Vector3 p2 = _b.position;
 			p2.z = 0;
 
-			ArrayList points = new ArrayList();
+			List<Vector3> points = new List<Vector3>();
 			points.Add(p1);
 			if (Mathf.Abs(p2.y - p1.y) > 0.01f) {
-				points.Add(new Vector3((p2.x - p1.x) / 2 + p1.x, p1.y, 0));
-				points.Add(new Vector3((p2.x - p1.x) / 2 + p1.x, p2.y, 0));
+				float x = (p2.x - p1.x)/2 + p1.x;
+				points.Add(new Vector3(.98f*(p2.x - p1.x)/2 + p1.x,p1.y,0));
+				points.Add(new Vector3(x, p1.y, 0));
+				float t1 = p1.y + (p2.y - p1.y) * .02f; // Helps avoid the bill boarding issues, not pretty code, but prettier lines
+				float t2 = p1.y + (p2.y - p1.y) * .98f;
+				points.Add(new Vector3(x,t1,0));
+				points.Add(new Vector3(x,t2,0));
+				points.Add(new Vector3(x, p2.y, 0));
 			}
 			points.Add(p2);
 			lr.SetVertexCount(points.Count);
 
 			for (int i = 0; i < points.Count; i++) {
-				lr.SetPosition(i, (Vector3)points[i]);
+				lr.SetPosition(i, points[i]);
 			}
 		}
 	}
