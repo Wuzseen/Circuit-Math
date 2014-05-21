@@ -42,8 +42,19 @@ public class NodeLine : MonoBehaviour {
 			p1.z = 0;
 			Vector3 p2 = _b.position;
 			p2.z = 0;
-			lr.SetPosition(0,p1);
-			lr.SetPosition(1,p2);
+
+			ArrayList points = new ArrayList();
+			points.Add(p1);
+			if (Mathf.Abs(p2.y - p1.y) > 0.01f) {
+				points.Add(new Vector3((p2.x - p1.x) / 2 + p1.x, p1.y, 0));
+				points.Add(new Vector3((p2.x - p1.x) / 2 + p1.x, p2.y, 0));
+			}
+			points.Add(p2);
+			lr.SetVertexCount(points.Count);
+
+			for (int i = 0; i < points.Count; i++) {
+				lr.SetPosition(i, (Vector3)points[i]);
+			}
 		}
 	}
 }
