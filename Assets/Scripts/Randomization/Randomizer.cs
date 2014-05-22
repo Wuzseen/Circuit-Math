@@ -13,6 +13,7 @@ public class Randomizer : MonoBehaviour {
 	public Transform nodePos2;
 	public List<GameInputNode> inputNodes;
 	private int inputNodesAdded = 0;
+	private List<GameObject> operators;
 
 
 
@@ -20,19 +21,41 @@ public class Randomizer : MonoBehaviour {
 	void Start()
 	{
 		operatorFactory = new OperatorFactory();
-
+		operators = new List<GameObject>();
 		GetRandomEquation();
+	}
+	void Update()
+	{
+		if (Input.GetButtonDown("Randomize"))
+		{
+			GetRandomEquation();
+		}
+	}
+
+	void ResetLevel()
+	{
+		ClearOperators();
+		RemoveAllNodeLines();
+		inputNodesAdded = 0;
+	}
+
+	void RemoveAllNodeLines()
+	{
+		foreach(NodeLine line in GameObject.FindObjectsOfType<NodeLine>())
+		{
+			Destroy(line.gameObject);
+		}
 	}
 
 	public void GetRandomEquation()
 	{
+		ResetLevel();
 		//Only using one operator right now
 		int solution = Random.Range(10, 100);
 		AddSolution (solution);
 		Operator op = operatorFactory.GetRandomOperator(level);
 		AddOperator(op, nodePos1.position);
 		EquationOperand equation = GetRandomEquation(solution, op);
-		Debug.Log("Initial " + equation.ToString());
 		int numOperators = Random.Range(1, maxNumOperators + 1);
 		for(int i = 1; i < numOperators; i++){
 			int operandNumber = Random.Range(0, 2);
@@ -42,7 +65,6 @@ public class Randomizer : MonoBehaviour {
 			{
 				eo = GetRandomEquation(equation.operand1.GetValue(), operatorFactory.GetRandomOperator(level));
 				equation.operand1 = eo;
-
 			}
 			else 
 			{
@@ -59,28 +81,29 @@ public class Randomizer : MonoBehaviour {
 	}
 	public EquationOperand GetRandomEquation(int solution, Operator op)
 	{
-		Debug.Log ("Operator" + op.symbol);
 		EquationOperand operand = op.GetRandomEquation(solution);
 		return operand;
 	}
 	public void AddSolution(int solution)
 	{
-		goal.GoalValue = solution;
+		Debug.Log ("Before = " + goal.GoalValue);
+		goal.SetGoalValue(solution);
+		Debug.Log ("After - " + goal.GoalValue);
+
 	}
 	public void AddOperator(Operator op, Vector3 position)
 	{
-		Instantiate(Resources.Load(op.nodePath), position, Quaternion.identity);
+		operators.Add((GameObject) Instantiate(Resources.Load(op.nodePath), position, Quaternion.identity));
 	}
 	public void AddInputs(List<int> inputs)
 	{
-		Debug.Log ("Coubt = " + inputs.Count);
 		for(int i = 0; i < inputs.Count; i++)
 		{
 			if(inputNodes.Count >= i + 1)
-				inputNodes[i].inputValue = inputs[i];
+				inputNodes[i].SetInputValue(inputs[i]);
 			else
 			{
-				Debug.Log ("Here");
+				Debug.Log ("Wrong number of inputs?");
 				//Add a new node or something... idk
 			}
 		}
@@ -95,8 +118,6 @@ public class Randomizer : MonoBehaviour {
 		{
 			inputVals = GetInputValues((EquationOperand) equation.operand1, inputVals);
 		}
-		Debug.Log("Val[0] = " + inputVals[0]);
-
 		
 		if (equation.operand2.GetType() == typeof(ValueOperand))
 		{
@@ -108,5 +129,14 @@ public class Randomizer : MonoBehaviour {
 
 		}
 		return inputVals;
+	}
+
+	void ClearOperators()
+	{
+		foreach(GameObject op in operators)
+		{
+			Destroy(op);
+		}
+		operators.Clear();
 	}
 }

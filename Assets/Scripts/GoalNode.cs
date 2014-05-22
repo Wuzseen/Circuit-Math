@@ -10,9 +10,10 @@ public class GoalNode : GameNode {
 	// Update is called once per frame
 	
 	protected override void Start () {
-		label.text = GoalValue.ToString();
+		SetGoalValue(GoalValue);
 		base.Start();
 		Game.Instance.AddGoalBucket(this);
+
 	}
 	
 	public override int NodeValue {
@@ -27,5 +28,13 @@ public class GoalNode : GameNode {
 			}
 			return 0;
 		}
+	}
+
+	public void SetGoalValue(int value)
+	{
+		GoalValue = value;
+		label.text = GoalValue.ToString();
+
+
 	}
 }

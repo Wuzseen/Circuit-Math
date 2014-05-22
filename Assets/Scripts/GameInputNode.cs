@@ -7,8 +7,16 @@ public class GameInputNode : GameNode {
 	
 	// Use this for initialization
 	protected override void Start () {
-		this.NodeValue = inputValue;
-		label.text = this.NodeValue.ToString();
+		SetInputValue(inputValue);
 		base.Start();
+	}
+
+	public void SetInputValue(int value)
+	{
+		inputValue = value;
+		this.NodeValue = inputValue;
+		label.text = NodeValue.ToString();
+
+
 	}
 }
