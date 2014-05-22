@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class OperatorFactory : MonoBehaviour {
+public class OperatorFactory {
 	private List<Operator> level1Operators;
 	// Use this for initialization
 
