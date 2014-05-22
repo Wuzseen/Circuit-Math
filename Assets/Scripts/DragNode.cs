@@ -59,7 +59,9 @@ public class DragNode : MonoBehaviour {
 				scaleTween.PlayForward();
 			}
 		} else {
-			OnPrematureEnd(new NodeConnectionArgs(this,null));
+			if(OnPrematureEnd != null) {
+				OnPrematureEnd(new NodeConnectionArgs(this,null));
+			}
 //			scaleTween.PlayReverse();
 		}
 	}
