@@ -76,7 +76,7 @@ public class Randomizer : MonoBehaviour {
 	}
 	public void AddOperator(Operator op, Vector3 position)
 	{
-		print (op.nodePath);
+//		print (op.nodePath);
 		GameObject pre = (GameObject)Resources.Load(op.nodePath);
 		NGUITools.AddChild(this.GameNodeCanvas,pre);
 //		Instantiate(Resources.Load(op.nodePath), position, Quaternion.identity);
