@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class Randomizer : MonoBehaviour {
-
+	public GameObject GameNodeCanvas;
 	public int level = 1;
 	public int maxNum = 100;
 	public int maxNumOperators = 1;
@@ -93,7 +93,16 @@ public class Randomizer : MonoBehaviour {
 	}
 	public void AddOperator(Operator op, Vector3 position)
 	{
+/*
+	<<<<<<< HEAD
 		operators.Add((GameObject) Instantiate(Resources.Load(op.nodePath), position, Quaternion.identity));
+=======
+*/
+//		print (op.nodePath);
+		GameObject pre = (GameObject)Resources.Load(op.nodePath);
+		operators.Add (pre);
+		NGUITools.AddChild(this.GameNodeCanvas,Instantiate(pre));
+//		Instantiate(Resources.Load(op.nodePath), position, Quaternion.identity);
 	}
 	public void AddInputs(List<int> inputs)
 	{
@@ -135,7 +144,7 @@ public class Randomizer : MonoBehaviour {
 	{
 		foreach(GameObject op in operators)
 		{
-			Destroy(op);
+			NGUITools.Destroy(op);
 		}
 		operators.Clear();
 	}

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public abstract class Operator : MonoBehaviour {
+public abstract class Operator {
 
 	public char symbol;
 	public string nodePath;
