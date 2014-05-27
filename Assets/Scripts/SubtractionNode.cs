@@ -21,7 +21,7 @@ public class SubtractionNode : GameNode {
 			foreach(GameNode node in this.inputNodes) {
 				difference -= node.NodeValue;
 			}
-			return difference;
+			return Mathf.Abs(difference);
 		}
 	}
 }
