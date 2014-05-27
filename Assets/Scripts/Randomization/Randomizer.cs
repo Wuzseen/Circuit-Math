@@ -92,16 +92,15 @@ public class Randomizer : MonoBehaviour {
 	}
 	public void AddOperator(Operator op, Vector3 position)
 	{
-/*
-	<<<<<<< HEAD
-		operators.Add((GameObject) Instantiate(Resources.Load(op.nodePath), position, Quaternion.identity));
-=======
-*/
 //		print (op.nodePath);
 		GameObject pre = (GameObject)Resources.Load(op.nodePath, typeof(GameObject));
 		GameObject go = Instantiate(pre) as GameObject; //So it's not pointing to a Prefab - It's pointing to a clone
 		GameObject g = NGUITools.AddChild(this.GameNodeCanvas, go);
 		Destroy(go);
+		Vector3 pos = g.transform.position;
+		pos.x += Random.Range(-.4f,.4f);
+		pos.y += Random.Range(-.4f,.4f);
+		g.transform.position = pos;
 		operators.Add(g);
 //		Instantiate(Resources.Load(op.nodePath), position, Quaternion.identity);
 	}
