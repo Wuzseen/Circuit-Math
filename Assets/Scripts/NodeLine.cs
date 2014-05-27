@@ -39,6 +39,8 @@ public class NodeLine : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if(lr != null) {
+			if(_a == null || _b == null)
+				return;
 			Vector3 p1 = _a.position;
 			p1.z = 0;
 			Vector3 p2 = _b.position;

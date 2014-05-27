@@ -5,6 +5,6 @@ public abstract class Operand {
 
 	protected int value; 
 
-	public abstract string ToString();
+	public new abstract string ToString();
 	public abstract int GetValue();
 }

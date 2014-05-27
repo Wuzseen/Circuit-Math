@@ -14,6 +14,7 @@ public class Randomizer : MonoBehaviour {
 	public List<GameInputNode> inputNodes;
 	private int inputNodesAdded = 0;
 	private List<GameObject> operators;
+//	private int inputNodesAdded = 0;
 
 
 
@@ -102,8 +103,6 @@ public class Randomizer : MonoBehaviour {
 		GameObject g = NGUITools.AddChild(this.GameNodeCanvas, go);
 		Destroy(go);
 		operators.Add(g);
-		Debug.Log(operators[0]);
-		Debug.Log (g);
 //		Instantiate(Resources.Load(op.nodePath), position, Quaternion.identity);
 	}
 	public void AddInputs(List<int> inputs)
