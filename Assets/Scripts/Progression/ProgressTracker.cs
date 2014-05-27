@@ -8,14 +8,23 @@ public class ProgressTracker : MonoBehaviour {
 			return _solvedCount;
 		}
 	}
+
 	private int _attempts;
 	public int Attempts {
 		get {
 			return _attempts;
 		}
 	}
+
+	private int _puzzlesSeen;
+	public int PuzzlesSeen {
+		get {
+			return _puzzlesSeen;
+		}
+	}
+
 	public static string TotalSolvedString = "TotalSolved";
-	public static string TotalAttemptsString = "TotalAttempts";
+	public static string TotalAttemptsString = "TotalAttempts"; // Times check button was hit
 	public static ProgressTracker Instance; // Oh the singleton pattern, laziness incarnate
 	// Use this for initialization
 	void Awake () {

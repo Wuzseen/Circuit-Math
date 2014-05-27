@@ -2,7 +2,16 @@
 using System.Collections;
 using System.Collections.Generic;
 
+public class RandomizerArgs {
+	public Randomizer _Randomizer;
+	public RandomizerArgs(Randomizer _randomizer) {
+		_Randomizer = _randomizer;
+	}
+}
+
 public class Randomizer : MonoBehaviour {
+	public delegate void RandomizerEventHandler(RandomizerArgs args);
+	public static event RandomizerEventHandler OnPuzzleCreated;
 	public GameObject GameNodeCanvas;
 	public int level = 1;
 	public int maxNum = 100;
@@ -15,9 +24,7 @@ public class Randomizer : MonoBehaviour {
 	private int inputNodesAdded = 0;
 	private List<GameObject> operators;
 //	private int inputNodesAdded = 0;
-
-
-
+	
 	private OperatorFactory operatorFactory;
 	void Start()
 	{
@@ -78,7 +85,9 @@ public class Randomizer : MonoBehaviour {
 		List<int> inputValues = GetInputValues(equation, new List<int>());
 		AddInputs(inputValues);
 		Debug.Log(equation.ToString() + " = " + equation.GetValue());
-
+		if(OnPuzzleCreated != null) {
+			OnPuzzleCreated(new RandomizerArgs(this));
+		}
 	}
 	public EquationOperand GetRandomEquation(int solution, Operator op)
 	{
