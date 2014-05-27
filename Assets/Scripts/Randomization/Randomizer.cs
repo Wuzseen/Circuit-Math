@@ -86,9 +86,7 @@ public class Randomizer : MonoBehaviour {
 	}
 	public void AddSolution(int solution)
 	{
-		Debug.Log ("Before = " + goal.GoalValue);
 		goal.SetGoalValue(solution);
-		Debug.Log ("After - " + goal.GoalValue);
 
 	}
 	public void AddOperator(Operator op, Vector3 position)
@@ -99,9 +97,13 @@ public class Randomizer : MonoBehaviour {
 =======
 */
 //		print (op.nodePath);
-		GameObject pre = (GameObject)Resources.Load(op.nodePath);
-		operators.Add (pre);
-		NGUITools.AddChild(this.GameNodeCanvas,Instantiate(pre));
+		GameObject pre = (GameObject)Resources.Load(op.nodePath, typeof(GameObject));
+		GameObject go = Instantiate(pre) as GameObject; //So it's not pointing to a Prefab - It's pointing to a clone
+		GameObject g = NGUITools.AddChild(this.GameNodeCanvas, go);
+		Destroy(go);
+		operators.Add(g);
+		Debug.Log(operators[0]);
+		Debug.Log (g);
 //		Instantiate(Resources.Load(op.nodePath), position, Quaternion.identity);
 	}
 	public void AddInputs(List<int> inputs)
@@ -144,7 +146,8 @@ public class Randomizer : MonoBehaviour {
 	{
 		foreach(GameObject op in operators)
 		{
-			NGUITools.Destroy(op);
+			op.SetActive(false);
+			//NGUITools.Destroy(op);
 		}
 		operators.Clear();
 	}

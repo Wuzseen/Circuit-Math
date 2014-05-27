@@ -427,9 +427,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4e3171b2e7c44e6096a0aed40afa245, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GameNodeCanvas: {fileID: 0}
   level: 1
   maxNum: 100
-  maxNumOperators: 2
+  maxNumOperators: 1
   inputNode: {fileID: 1785725532}
   goal: {fileID: 1482759055}
   nodePos1: {fileID: 1268817441}
