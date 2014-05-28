@@ -76,6 +76,7 @@ public class DragNode : MonoBehaviour {
 			if(other != null && other != this) {
 				OnConnectionMade(new NodeConnectionArgs(other,this));
 				scaleTween.PlayForward();
+				Particlizer.Instance.Shock(transform.position);
 			}
 		}
 	}
