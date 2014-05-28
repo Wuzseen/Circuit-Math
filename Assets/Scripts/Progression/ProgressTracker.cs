@@ -13,7 +13,14 @@ public class DifficultyProgress {
 	}
 }
 
+public enum GameMode {
+	Career,
+	Relax,
+	Timed
+}
+
 public class ProgressTracker : MonoBehaviour {
+	public static GameMode ActiveGameMode;
 	public static string EasyString = "Easy";
 	public static string MediumString = "Normal";
 	public static string HardString = "Hard";
