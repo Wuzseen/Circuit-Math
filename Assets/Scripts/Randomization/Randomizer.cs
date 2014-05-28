@@ -14,7 +14,7 @@ public class Randomizer : MonoBehaviour {
 	public static event RandomizerEventHandler OnPuzzleCreated;
 	public GameObject GameNodeCanvas;
 	public int level = 1;
-	public int maxNum = 100;
+	public int maxNum = 50;
 	public int maxNumOperators = 1;
 	public GameInputNode inputNode;
 	public GoalNode goal;
@@ -23,8 +23,7 @@ public class Randomizer : MonoBehaviour {
 	public List<GameInputNode> inputNodes;
 	private int inputNodesAdded = 0;
 	private List<GameObject> operators;
-//	private int inputNodesAdded = 0;
-	
+
 	private OperatorFactory operatorFactory;
 	void Start()
 	{
@@ -59,26 +58,25 @@ public class Randomizer : MonoBehaviour {
 	{
 		ResetLevel();
 		//Only using one operator right now
-		int solution = Random.Range(10, 100);
-		AddSolution (solution);
 		Operator op = operatorFactory.GetRandomOperator(level);
+		int solution = op.GetRandomValidSolution(10, maxNum);
+		AddSolution (solution);
+
 		AddOperator(op, nodePos1.position);
 		EquationOperand equation = GetRandomEquation(solution, op);
 		int numOperators = Random.Range(1, maxNumOperators + 1);
 		for(int i = 1; i < numOperators; i++){
 			int operandNumber = Random.Range(0, 2);
 			EquationOperand eo; 
-
 			if (operandNumber == 0)
 			{
-				eo = GetRandomEquation(equation.operand1.GetValue(), operatorFactory.GetRandomOperator(level));
+				eo = GetRandomEquation(equation.operand1.GetValue(), operatorFactory.GetRandomOperator(1));
 				equation.operand1 = eo;
 			}
 			else 
 			{
-				eo = GetRandomEquation(equation.operand2.GetValue(), operatorFactory.GetRandomOperator(level));
+				eo = GetRandomEquation(equation.operand2.GetValue(), operatorFactory.GetRandomOperator(1));
 				equation.operand2 = eo;
-
 			}
 			AddOperator(eo._operator, nodePos2.position);
 		}

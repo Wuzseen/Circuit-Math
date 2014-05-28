@@ -18,6 +18,10 @@ public abstract class Operator {
 	{
 
 	}
+	public virtual int GetRandomValidSolution(int minNum, int maxNum)
+	{
+		return Random.Range(minNum, maxNum+1);
+	}
 
 	public abstract EquationOperand GetRandomEquation(int solution);
 	public abstract int Apply(Operand operand1, Operand operand2);
