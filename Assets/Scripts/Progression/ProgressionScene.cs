@@ -6,9 +6,14 @@ public class ProgressionScene : MonoBehaviour {
 	public UILabel count, attempts;
 	// Use this for initialization
 	public void Start() {
-		progressSlider.value = (float)ProgressTracker.Instance.SolvedCount / 200f;
-		count.text = ProgressTracker.Instance.SolvedCount.ToString();
-		attempts.text = string.Format("{0:D} Solve Attempts made.",ProgressTracker.Instance.Attempts);
+		UpdateToCurrentDifficulty();
+	}
+
+	public void UpdateToCurrentDifficulty() {
+		int cSolved = ProgressTracker.Instance.CurrentDifficultySolved();
+		progressSlider.value = (float)cSolved / 200f;
+		count.text = cSolved.ToString();
+		attempts.text = string.Format("{0:D} Solve Attempts made.",ProgressTracker.Instance.CurrentDifficultyAttempts());
 	}
 
 	public void LoadGameScene () {

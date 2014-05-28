@@ -84,7 +84,7 @@ GameObject:
   - 4: {fileID: 58264070}
   - 20: {fileID: 58264072}
   - 114: {fileID: 58264071}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -162,7 +162,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 32
+    m_Bits: 288
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_HDR: 0
@@ -176,7 +176,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 162646870}
   - 114: {fileID: 162646871}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Foreground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -309,7 +309,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967263
+    m_Bits: 4294967007
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_HDR: 0
@@ -362,7 +362,7 @@ GameObject:
   - 4: {fileID: 207525699}
   - 114: {fileID: 207525701}
   - 114: {fileID: 207525700}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Control - Simple Progress Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -471,7 +471,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 253816866}
   - 114: {fileID: 253816867}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -565,7 +565,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11400004, guid: ea7ea4be01fdadf45a93ce4ffd074f36, type: 2}
       propertyPath: onChange.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: ea7ea4be01fdadf45a93ce4ffd074f36, type: 2}
       propertyPath: m_LocalPosition.x
@@ -597,15 +597,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100002, guid: ea7ea4be01fdadf45a93ce4ffd074f36, type: 2}
       propertyPath: m_Layer
-      value: 5
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: ea7ea4be01fdadf45a93ce4ffd074f36, type: 2}
       propertyPath: m_Layer
-      value: 5
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 100004, guid: ea7ea4be01fdadf45a93ce4ffd074f36, type: 2}
       propertyPath: m_Layer
-      value: 5
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 11400004, guid: ea7ea4be01fdadf45a93ce4ffd074f36, type: 2}
       propertyPath: items.Array.data[0]
@@ -662,6 +662,14 @@ Prefab:
     - target: {fileID: 11400004, guid: ea7ea4be01fdadf45a93ce4ffd074f36, type: 2}
       propertyPath: onChange.Array.data[1].mMethodName
       value: UpdateDifficulty
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400004, guid: ea7ea4be01fdadf45a93ce4ffd074f36, type: 2}
+      propertyPath: onChange.Array.data[2].mTarget
+      value: 
+      objectReference: {fileID: 684203619}
+    - target: {fileID: 11400004, guid: ea7ea4be01fdadf45a93ce4ffd074f36, type: 2}
+      propertyPath: onChange.Array.data[2].mMethodName
+      value: UpdateToCurrentDifficulty
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ea7ea4be01fdadf45a93ce4ffd074f36, type: 2}
@@ -721,15 +729,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 8b0d1c50c984d704f94ef3e458f797fa, type: 2}
       propertyPath: m_Layer
-      value: 5
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 100002, guid: 8b0d1c50c984d704f94ef3e458f797fa, type: 2}
       propertyPath: m_Layer
-      value: 5
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 100004, guid: 8b0d1c50c984d704f94ef3e458f797fa, type: 2}
       propertyPath: m_Layer
-      value: 5
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 11400010, guid: 8b0d1c50c984d704f94ef3e458f797fa, type: 2}
       propertyPath: mValue
@@ -800,7 +808,7 @@ GameObject:
   - 114: {fileID: 832130144}
   - 114: {fileID: 832130143}
   - 54: {fileID: 832130142}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: UI Root
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -815,7 +823,7 @@ Transform:
   m_GameObject: {fileID: 832130140}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: .00289855083, y: .00289855083, z: .00289855083}
+  m_LocalScale: {x: .00236127502, y: .00236127502, z: .00236127502}
   m_Children:
   - {fileID: 58264070}
   m_Father: {fileID: 0}
@@ -903,7 +911,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 881277708}
   - 114: {fileID: 881277709}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Current
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -992,7 +1000,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 950997597}
   - 114: {fileID: 950997598}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1082,7 +1090,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 990078962}
   - 114: {fileID: 990078963}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Total
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1242,11 +1250,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 7c3a28b051e872b448d4808cfcf9199c, type: 2}
       propertyPath: m_Layer
-      value: 5
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 100002, guid: 7c3a28b051e872b448d4808cfcf9199c, type: 2}
       propertyPath: m_Layer
-      value: 5
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 11400002, guid: 7c3a28b051e872b448d4808cfcf9199c, type: 2}
       propertyPath: mText
@@ -1274,7 +1282,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1443849015}
   - 114: {fileID: 1443849016}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Symbol
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1366,7 +1374,7 @@ GameObject:
   - 114: {fileID: 1690064243}
   - 114: {fileID: 1690064242}
   - 65: {fileID: 1690064241}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Control - Simple Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1488,7 +1496,7 @@ GameObject:
   - 114: {fileID: 1870367045}
   - 65: {fileID: 1870367044}
   - 114: {fileID: 1870367043}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Control - Colored Popup List
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1584,6 +1592,10 @@ MonoBehaviour:
     mMethodName: UpdateDifficulty
     mParameters: []
     oneShot: 0
+  - mTarget: {fileID: 684203619}
+    mMethodName: UpdateToCurrentDifficulty
+    mParameters: []
+    oneShot: 0
   mSelectedItem: Easy
   eventReceiver: {fileID: 0}
   functionName: 
@@ -1650,7 +1662,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1979028223}
   - 114: {fileID: 1979028224}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1741,7 +1753,7 @@ GameObject:
   - 4: {fileID: 1985599806}
   - 114: {fileID: 1985599805}
   - 54: {fileID: 1985599804}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1831,7 +1843,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 2008842753}
   - 114: {fileID: 2008842754}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1959,7 +1971,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 2080431014}
   - 114: {fileID: 2080431015}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Attempts
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2007,17 +2019,17 @@ MonoBehaviour:
   updateAnchors: 1
   mColor: {r: 1, g: 1, b: 1, a: 1}
   mPivot: 4
-  mWidth: 6
+  mWidth: 204
   mHeight: 20
   mDepth: 6
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
-  aspectRatio: .300000012
+  aspectRatio: 10.1999998
   keepCrispWhenShrunk: 1
   mTrueTypeFont: {fileID: 0}
   mFont: {fileID: 11400000, guid: 29056518aafb01b49a5b08faf8e30cff, type: 2}
-  mText: 
+  mText: X Solve attempts made
   mFontSize: 20
   mFontStyle: 0
   mAlignment: 0

@@ -1,31 +1,28 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+
+public class DifficultyProgress {
+	public int Solved;
+	public int Attempts;
+	public int Seen;
+	public DifficultyProgress(int _count, int _attempts, int _seen) {
+		Solved = _count;
+		Attempts = _attempts;
+		Seen = _seen;
+	}
+}
 
 public class ProgressTracker : MonoBehaviour {
-	private int _solvedCount;
-	public int SolvedCount {
-		get {
-			return _solvedCount;
-		}
-	}
-
-	private int _attempts;
-	public int Attempts {
-		get {
-			return _attempts;
-		}
-	}
-
-	private int _puzzlesSeen;
-	public int PuzzlesSeen {
-		get {
-			return _puzzlesSeen;
-		}
-	}
-
+	public static string EasyString = "Easy";
+	public static string MediumString = "Normal";
+	public static string HardString = "Hard";
+	public static string ExpertString = "Expert";
 	public static string TotalSolvedString = "TotalSolved";
 	public static string TotalAttemptsString = "TotalAttempts"; // Times check button was hit
+	public static string TotalPuzzlesString = "TotalPuzzles";
 	public static ProgressTracker Instance; // Oh the singleton pattern, laziness incarnate
+	public Dictionary<string,DifficultyProgress> ProgressionDict;
 	// Use this for initialization
 	void Awake () {
 		if(Instance != null) {
@@ -34,26 +31,89 @@ public class ProgressTracker : MonoBehaviour {
 		}
 		Instance = this;
 		SolverCheck.OnSolveAttempt += SolveAttempt;
-		if(PlayerPrefs.HasKey(TotalSolvedString)) {
-			_solvedCount = PlayerPrefs.GetInt(TotalSolvedString);
-		} else {
-			_solvedCount = 0;
+		Randomizer.OnPuzzleCreated += NewPuzzle;
+		string[] diffStrings = new string[]{EasyString,MediumString,HardString,ExpertString};
+		ProgressionDict = new Dictionary<string, DifficultyProgress>();
+		foreach(string s in diffStrings) {
+			int solved = PrefCount(PrefKey(s,TotalSolvedString)); 
+			int attempted = PrefCount(PrefKey(s,TotalAttemptsString));
+			int seen = PrefCount(PrefKey(s,TotalPuzzlesString));
+			ProgressionDict.Add(s,new DifficultyProgress(solved,attempted,seen));
 		}
-		if(PlayerPrefs.HasKey(TotalAttemptsString)) {
-			_attempts = PlayerPrefs.GetInt(TotalAttemptsString);
+	}
+
+	string PrefKey(string difficultyString,string itemString) {
+		return string.Format("{0}_{1}",difficultyString,itemString);
+	}
+
+	string DifficultyString() {
+		string currDiffString = "";
+		if(DifficultyMode.SelectedDifficulty == Difficulty.Easy) {
+			currDiffString = EasyString;
+		} else if(DifficultyMode.SelectedDifficulty == Difficulty.Medium) {
+			currDiffString = MediumString;
+		} else if(DifficultyMode.SelectedDifficulty == Difficulty.Hard) {
+			currDiffString = HardString;
 		} else {
-			_attempts = 0;
+			currDiffString = ExpertString;
 		}
+		return currDiffString;
+	}
+
+	string PrefKeyFromDifficulty(string itemString) {
+		return PrefKey(DifficultyString(),itemString);
+	}
+
+	int PrefCount(string pref) {
+		if(PlayerPrefs.HasKey(pref)) {
+			return PlayerPrefs.GetInt(pref);
+		}
+		return 0;
+	}
+	int DifficultySolveCount(string difficulty) {
+		return ProgressionDict[difficulty].Solved;
+	}
+
+	public int EasyPuzzlesSolved() {
+		return DifficultySolveCount(EasyString);
+	}
+
+	public int MediumPuzzlesSolved() {
+		return DifficultySolveCount(MediumString);
+	}
+
+	public int HardPuzzlesSolved() {
+		return DifficultySolveCount(HardString);
+	}
+
+	public int ExpertPuzzlesSolved() {
+		return DifficultySolveCount(ExpertString);
+	}
+
+	public int CurrentDifficultySolved() {
+		return DifficultySolveCount(DifficultyString());
+	}
+	
+	public int CurrentDifficultyAttempts() {
+		return ProgressionDict[DifficultyString()].Attempts;
+	}
+
+	void NewPuzzle(RandomizerArgs args) {
+		string diff = DifficultyString();
+		ProgressionDict[diff].Seen++;
+		PlayerPrefs.SetInt(PrefKey(diff,TotalPuzzlesString),ProgressionDict[diff].Seen);
 	}
 
 	private void UpdateAttempts(int toAdd) {
-		_attempts += toAdd;
-		PlayerPrefs.SetInt(TotalAttemptsString,_attempts);
+		string diff = DifficultyString();
+		ProgressionDict[diff].Attempts += toAdd;
+		PlayerPrefs.SetInt(PrefKey(diff,TotalAttemptsString),ProgressionDict[diff].Attempts);
 	}
 
 	private void UpdateTotalSolved(int toAdd) {
-		_solvedCount += toAdd;
-		PlayerPrefs.SetInt(TotalSolvedString,_solvedCount);
+		string diff = DifficultyString();
+		ProgressionDict[diff].Solved += toAdd;
+		PlayerPrefs.SetInt(PrefKey(diff,TotalSolvedString),ProgressionDict[diff].Solved);
 		UpdateAttempts(toAdd);
 	}
 
