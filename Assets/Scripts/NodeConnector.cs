@@ -127,7 +127,8 @@ public class NodeConnector : MonoBehaviour {
 		nc.a.ResetScale();
 		nc.b.ResetScale();
 		connections.Remove(nc);
-		Destroy (lr.gameObject);
+		if(lr != null)
+			Destroy (lr.gameObject);
 	}
 
 	void OnDrop() {

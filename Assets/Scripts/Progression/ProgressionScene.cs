@@ -20,7 +20,7 @@ public class ProgressionScene : MonoBehaviour {
 	public void SetGameMode() {
 		if(gameMode.value == "Relax") {
 			ProgressTracker.ActiveGameMode = GameMode.Relax;
-		} else if(gameMode.value == "Timed") {
+		} else if(gameMode.value == "Time") {
 			ProgressTracker.ActiveGameMode = GameMode.Timed;
 		} else {
 			ProgressTracker.ActiveGameMode = GameMode.Career;

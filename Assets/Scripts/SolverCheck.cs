@@ -11,9 +11,12 @@ public class SolverArgs {
 public class SolverCheck : MonoBehaviour {
 	public delegate void SolverEventHandler(SolverArgs args);
 	public static event SolverEventHandler OnSolveAttempt;
+	private Randomizer randomizer;
+	private Game game;
 	// Use this for initialization
 	void Start () {
-	
+		randomizer = GameObject.FindObjectOfType<Randomizer>() as Randomizer;
+		game = GameObject.FindObjectOfType<Game>() as Game;
 	}
 	
 	// Update is called once per frame
@@ -25,6 +28,11 @@ public class SolverCheck : MonoBehaviour {
 		bool solved = Game.Instance.IsSolved();
 		if(solved) {
 			print ("SOLVED");
+			randomizer.GetRandomEquation();
+			if (ProgressTracker.ActiveGameMode == GameMode.Timed)
+			{
+				game.CorrectSolution();
+			}
 		} else {
 			print ("WRONG");
 		}
