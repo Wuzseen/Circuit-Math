@@ -18,16 +18,16 @@ public class OperatorFactory {
 		level2Operators.Add(new MultiplicationOperator());
 	}
 
-	public List<Operator> GetOperators(int level)
+	public List<Operator> GetOperators(Difficulty level)
 	{
-		if (level == 1)
+		if (level == Difficulty.Easy)
 		{
 			return level1Operators;
 		}
 		else
 			return level2Operators;
 	}
-	public Operator GetRandomOperator(int level)
+	public Operator GetRandomOperator(Difficulty level)
 	{
 		List<Operator> operators = GetOperators(level); 
 		Operator randomOp = operators[Random.Range(0, operators.Count)]; //random Operator

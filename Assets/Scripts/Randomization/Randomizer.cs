@@ -13,7 +13,7 @@ public class Randomizer : MonoBehaviour {
 	public delegate void RandomizerEventHandler(RandomizerArgs args);
 	public static event RandomizerEventHandler OnPuzzleCreated;
 	public GameObject GameNodeCanvas;
-	public int level = 1;
+	public Difficulty level = Difficulty.Easy;
 	public int maxNum = 50;
 	public int maxNumOperators = 1;
 	public GameInputNode inputNode;
@@ -29,6 +29,7 @@ public class Randomizer : MonoBehaviour {
 	{
 		operatorFactory = new OperatorFactory();
 		operators = new List<GameObject>();
+		level = DifficultyMode.SelectedDifficulty;
 		GetRandomEquation();
 	}
 	void Update()
@@ -70,12 +71,12 @@ public class Randomizer : MonoBehaviour {
 			EquationOperand eo; 
 			if (operandNumber == 0)
 			{
-				eo = GetRandomEquation(equation.operand1.GetValue(), operatorFactory.GetRandomOperator(1));
+				eo = GetRandomEquation(equation.operand1.GetValue(), operatorFactory.GetRandomOperator(Difficulty.Easy));
 				equation.operand1 = eo;
 			}
 			else 
 			{
-				eo = GetRandomEquation(equation.operand2.GetValue(), operatorFactory.GetRandomOperator(1));
+				eo = GetRandomEquation(equation.operand2.GetValue(), operatorFactory.GetRandomOperator(Difficulty.Easy));
 				equation.operand2 = eo;
 			}
 			AddOperator(eo._operator, nodePos2.position);
