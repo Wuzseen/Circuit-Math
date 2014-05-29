@@ -59,8 +59,8 @@ public class Game : MonoBehaviour {
 		{
 			timeLeft -= (Time.time - timeNoted);
 			timeNoted = Time.time;
-			if (timeLabel != null);
-			timeLabel.text = Mathf.CeilToInt(timeLeft-1).ToString();
+			if (timeLabel != null)
+				timeLabel.text = Mathf.CeilToInt(timeLeft-1).ToString();
 			if (timeLeft <= 0)
 			{
 				GameOver();

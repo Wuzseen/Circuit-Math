@@ -7,6 +7,8 @@ public enum NodeType {
 	Addition,
 	Subtraction,
 	Multiplication,
+	Division,
+	Square,
 	Goal
 }
 

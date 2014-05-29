@@ -65,6 +65,7 @@ public class Randomizer : MonoBehaviour {
 
 		AddOperator(op, nodePos1.position);
 		EquationOperand equation = GetRandomEquation(solution, op);
+
 		int numOperators = Random.Range(1, maxNumOperators + 1);
 		for(int i = 1; i < numOperators; i++){
 			int operandNumber = Random.Range(0, 2);
@@ -73,14 +74,16 @@ public class Randomizer : MonoBehaviour {
 			{
 				eo = GetRandomEquation(equation.operand1.GetValue(), operatorFactory.GetRandomOperator(Difficulty.Easy));
 				equation.operand1 = eo;
+				AddOperator(eo._operator, nodePos2.position);
 			}
-			else 
+			else if (op.GetType() != typeof(SquareOperator)) // make sure not to change the 2 in x ^ 2
 			{
 				eo = GetRandomEquation(equation.operand2.GetValue(), operatorFactory.GetRandomOperator(Difficulty.Easy));
 				equation.operand2 = eo;
+				AddOperator(eo._operator, nodePos2.position);
 			}
-			AddOperator(eo._operator, nodePos2.position);
 		}
+
 		List<int> inputValues = GetInputValues(equation, new List<int>());
 		AddInputs(inputValues);
 		Debug.Log(equation.ToString() + " = " + equation.GetValue());
@@ -114,10 +117,25 @@ public class Randomizer : MonoBehaviour {
 	}
 	public void AddInputs(List<int> inputs)
 	{
-		for(int i = 0; i < inputs.Count; i++)
+		// add random numbers until inputs.Count == inputNodes.Count
+		for (int i = inputs.Count; i < inputNodes.Count; i++)
+		{
+			inputs.Add(Random.Range(1, 100));
+		}
+
+		// randomly place input values into an array
+		int[] ins = new int[inputNodes.Count];
+		for (int i = 0; i < ins.Length; i++)
+		{
+			int which = Random.Range(0, inputs.Count); // get random remaining input
+			ins[i] = inputs[which]; // put input value into array
+			inputs.RemoveAt(which); // remove input from the list
+		}
+
+		for(int i = 0; i < ins.Length; i++)
 		{
 			if(inputNodes.Count >= i + 1)
-				inputNodes[i].SetInputValue(inputs[i]);
+				inputNodes[i].SetInputValue(ins[i]);
 			else
 			{
 				Debug.Log ("Wrong number of inputs?");
