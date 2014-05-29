@@ -10,6 +10,9 @@ public class Game : MonoBehaviour {
 	public int correctAnswers;
 	private float timeLeft;
 	private float timeNoted;
+	public UILabel timeLabel;
+	public UILabel countLabel;
+	public UILabel defeatLabel;
 	public static Game Instance {
 		get { return instance; }
 	}
@@ -18,13 +21,22 @@ public class Game : MonoBehaviour {
 	void Awake () {
 		goalBuckets = new List<GameNode>();
 		instance = this;
+		if (defeatLabel != null)
+			defeatLabel.gameObject.SetActive(false);
+
 		if (ProgressTracker.ActiveGameMode == GameMode.Timed)
 		{
 			timedMode = true;
 			timeLeft = initialTimerLength;
 			timeNoted = Time.time;
+
+
 		}
 		else{
+			if (timeLabel != null)
+				timeLabel.gameObject.SetActive(false);
+			if (countLabel != null)
+				countLabel.gameObject.SetActive(false);
 			Debug.Log (ProgressTracker.ActiveGameMode);
 		}
 	}
@@ -47,7 +59,8 @@ public class Game : MonoBehaviour {
 		{
 			timeLeft -= (Time.time - timeNoted);
 			timeNoted = Time.time;
-			Debug.Log (Mathf.FloorToInt(timeLeft).ToString());
+			if (timeLabel != null);
+			timeLabel.text = Mathf.CeilToInt(timeLeft-1).ToString();
 			if (timeLeft <= 0)
 			{
 				GameOver();
@@ -58,11 +71,17 @@ public class Game : MonoBehaviour {
 	{
 		timeLeft +=  completedBonusTime;
 		correctAnswers++;
+		if (countLabel != null)
+			countLabel.text = correctAnswers.ToString();
 	}
 
 	void GameOver()
 	{
 		Debug.Log ("Game Over");
 		timedMode = false;
+		if (defeatLabel != null)
+		{
+			defeatLabel.gameObject.SetActive(true);
+		}
 	}
 }
