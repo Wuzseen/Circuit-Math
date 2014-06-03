@@ -44,6 +44,7 @@ public class DragNode : MonoBehaviour {
 	// Use this for initialization
 
 	void Start () {
+		((SphereCollider)this.collider).radius = 40f;
 		scaleTween = GetComponent<TweenScale>();
 		scaleTween.to = this.transform.localScale * 1.2f;
 		scaleTween.duration = .3f;
