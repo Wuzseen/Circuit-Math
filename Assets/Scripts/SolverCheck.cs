@@ -9,6 +9,7 @@ public class SolverArgs {
 }
 
 public class SolverCheck : MonoBehaviour {
+	public AudioClip successClipSound;
 	public static SolverCheck Instance;
 	public delegate void SolverEventHandler(SolverArgs args);
 	public static event SolverEventHandler OnSolveAttempt;
@@ -28,6 +29,7 @@ public class SolverCheck : MonoBehaviour {
 	}
 
 	IEnumerator newPuzzleRoutine() {
+		SoundManager.PlaySFX(successClipSound);
 		Go.to (winText,.2f,new GoTweenConfig().floatProp("alpha",255f));
 		yield return new WaitForSeconds(2f);
 		Fractal.FractalMaster.TurnAllOff();

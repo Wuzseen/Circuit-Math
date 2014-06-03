@@ -36,9 +36,14 @@ public class ProgressionScene : MonoBehaviour {
 	}
 
 	public void LoadGameScene () {
+		StartCoroutine("AfterDelay");
+	}
+
+
+	IEnumerator AfterDelay() {
+		yield return new WaitForSeconds(.4f);
 		Application.LoadLevel("main");
 	}
-	
 	// Update is called once per frame
 	void Update () {
 	

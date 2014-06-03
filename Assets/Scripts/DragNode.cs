@@ -44,7 +44,7 @@ public class DragNode : MonoBehaviour {
 	// Use this for initialization
 
 	void Start () {
-		((SphereCollider)this.collider).radius = 40f;
+		((SphereCollider)this.collider).radius = 22f;
 		scaleTween = GetComponent<TweenScale>();
 		scaleTween.to = this.transform.localScale * 1.2f;
 		scaleTween.duration = .3f;
@@ -76,6 +76,7 @@ public class DragNode : MonoBehaviour {
 			DragNode other = (DragNode)drag.GetComponent(typeof(DragNode));
 			if(other != null && other != this) {
 				OnConnectionMade(new NodeConnectionArgs(other,this));
+				SoundManager.PlaySFX(SoundManager.LoadFromGroup("ConnectionSounds"));
 				scaleTween.PlayForward();
 				Particlizer.Instance.Shock(transform.position);
 			}

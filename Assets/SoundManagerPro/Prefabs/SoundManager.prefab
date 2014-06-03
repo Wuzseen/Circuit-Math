@@ -162,11 +162,27 @@ MonoBehaviour:
   showList: 1
   showAdd: 1
   showSFX: 1
-  showSFXDetails: 
-  groupAddIndex: 0
+  showSFXDetails: 0000
+  groupAddIndex: 1
   autoPrepoolAmount: 0
-  showAsGrouped: 0
-  soundConnections: []
+  showAsGrouped: 1
+  soundConnections:
+  - level: progressScene
+    isCustomLevel: 0
+    soundsToPlay:
+    - {fileID: 8300000, guid: e714fce3ff99e1f4bbf8264715b92e86, type: 3}
+    playMethod: 0
+    minDelay: 0
+    maxDelay: 0
+    delay: 0
+  - level: main
+    isCustomLevel: 0
+    soundsToPlay:
+    - {fileID: 8300000, guid: e714fce3ff99e1f4bbf8264715b92e86, type: 3}
+    playMethod: 0
+    minDelay: 0
+    maxDelay: 0
+    delay: 0
   audios:
   - {fileID: 8200002}
   - {fileID: 8200000}
@@ -179,21 +195,34 @@ MonoBehaviour:
     minDelay: 0
     maxDelay: 0
     delay: 0
-  crossDuration: 5
+  crossDuration: 0
   showDebug: 1
   offTheBGM: 0
   isPaused: 0
   movingOnFromSong: 0
   ignoreLevelLoad: 0
   resourcesPath: Sounds/SFX
-  storedSFXs: []
+  storedSFXs:
+  - {fileID: 8300000, guid: a2898c9f5ca68264da954c2373e0aea7, type: 3}
+  - {fileID: 8300000, guid: 8a17b5b590363f3489a4696f44e44f7c, type: 3}
   unOwnedSFXObjects: []
-  sfxGroups: []
-  clipToGroupKeys: []
-  clipToGroupValues: []
+  sfxGroups:
+  - groupName: ConnectionSounds
+    specificCapAmount: -1
+    clips: []
+    independentVolume: 0
+    independentPitch: 0
+    volume: 1
+    pitch: 1
+  clipToGroupKeys:
+  - off
+  - on
+  clipToGroupValues:
+  - ConnectionSounds
+  - ConnectionSounds
   offTheSFX: 0
   capAmount: 3
-  sfxPrePoolAmounts: 
+  sfxPrePoolAmounts: 0000000000000000
   SFXObjectLifetime: 10
 --- !u!1001 &100100000
 Prefab:
