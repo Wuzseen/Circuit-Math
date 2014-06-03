@@ -33,7 +33,7 @@ public class MultiplicationOperator : Operator {
 
 			if (product % i == 0)
 			{
-				Debug.Log (i + " = factor"); 
+//				Debug.Log (i + " = factor"); 
 				factors.Add(i);
 			}
 		}

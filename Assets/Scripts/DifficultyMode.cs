@@ -10,14 +10,12 @@ public enum Difficulty {
 
 public class DifficultyMode : MonoBehaviour {
 	public static Difficulty SelectedDifficulty;
-	public UIPopupList popup;
-
-	public void UpdateDifficulty () {
-		if(popup.value == "Easy") {
+	public void UpdateDifficulty (string val) {
+		if(val == "Easy") {
 			SelectedDifficulty = Difficulty.Easy;
-		} else if(popup.value == "Medium") {
+		} else if(val == "Medium") {
 			SelectedDifficulty = Difficulty.Medium;
-		} else if(popup.value == "Hard") {
+		} else if(val == "Hard") {
 			SelectedDifficulty = Difficulty.Hard;
 		} else {
 			SelectedDifficulty = Difficulty.Expert;

@@ -19,10 +19,12 @@ public class NodeLine : MonoBehaviour {
 
 	Transform _a, _b;
 	public Transform A {
+		get { return _a; }
 		set { _a = value; }
 	}
 
 	public Transform B {
+		get { return _b; }
 		set { _b = value; }
 	}
 
