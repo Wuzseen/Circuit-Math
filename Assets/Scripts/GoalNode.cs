@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 // A goal bucket is just like any other node, but it only has 1 input.
 public class GoalNode : GameNode {
@@ -13,7 +14,11 @@ public class GoalNode : GameNode {
 		SetGoalValue(GoalValue);
 		base.Start();
 		Game.Instance.AddGoalBucket(this);
+		Randomizer.OnPuzzleCreated += NewPuzzle;
+	}
 
+	private void NewPuzzle(RandomizerArgs args) {
+		this.inputNodes = new List<GameNode>();
 	}
 	
 	public override int NodeValue {

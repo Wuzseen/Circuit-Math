@@ -54,11 +54,16 @@ public class GameNode : MonoBehaviour {
 				n.Sprite.color = NodeColor;
 			}
 		}
+		Randomizer.OnPuzzleCreated += NewPuzzle;
+	}
+
+	
+	private void NewPuzzle(RandomizerArgs args) {
+		this.inputNodes = new List<GameNode>();
 	}
 
 	public void AddInputNode(GameNode value) {
 		if(inputNodes.Contains(value) == false) {
-//			print (string.Format("Adding {0} (from {2}) to {1}'s input nodes",value.NodeValue.ToString(),this.name,value.name));
 			inputNodes.Add(value);
 			SolverCheck.Instance.CheckSolve();
 		}
