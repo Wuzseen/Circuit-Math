@@ -21,7 +21,7 @@ public class Randomizer : MonoBehaviour {
 	public Transform nodePos1;
 	public Transform nodePos2;
 	public List<GameInputNode> inputNodes;
-	private int inputNodesAdded = 0;
+//	private int inputNodesAdded = 0;
 	private List<GameObject> operators;
 
 	private OperatorFactory operatorFactory;
@@ -44,7 +44,7 @@ public class Randomizer : MonoBehaviour {
 	{
 		ClearOperators();
 		RemoveAllNodeLines();
-		inputNodesAdded = 0;
+//		inputNodesAdded = 0;
 	}
 
 	void RemoveAllNodeLines()

@@ -59,13 +59,15 @@ public class GameNode : MonoBehaviour {
 	public void AddInputNode(GameNode value) {
 		if(inputNodes.Contains(value) == false) {
 //			print (string.Format("Adding {0} (from {2}) to {1}'s input nodes",value.NodeValue.ToString(),this.name,value.name));
+			Fractal.FractalMaster.RandomBGChange();
 			inputNodes.Add(value);
 		}
 	}
 
 	public void RemoveInputNode(GameNode node) {
 		if(inputNodes.Contains(node) == true) {
-//			print (string.Format("Removing {0} to {1}'s input nodes",node.NodeValue.ToString(),this.name));
+			//			print (string.Format("Removing {0} to {1}'s input nodes",node.NodeValue.ToString(),this.name));
+			Fractal.FractalMaster.RandomBGChange();
 			inputNodes.Remove(node);
 		}
 	}
