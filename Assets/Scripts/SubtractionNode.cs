@@ -14,14 +14,15 @@ public class SubtractionNode : GameNode {
 
 	public override int NodeValue {
 		get {
-			int difference = inputNodes[0].NodeValue + inputNodes[0].NodeValue; // require at least 2 nodes TODO - make this better
+			if(inputNodes.Count != 2) {
+				print ("BADNESS");
+				return -1;
+			}
+			int difference = Mathf.Abs(inputNodes[0].NodeValue - inputNodes[1].NodeValue); // require at least 2 nodes TODO - make this better
 			if (inputNodes.Count < 2) {
 				return inputNodes[0].NodeValue;
 			}
-			foreach(GameNode node in this.inputNodes) {
-				difference -= node.NodeValue;
-			}
-			return Mathf.Abs(difference);
+			return difference;
 		}
 	}
 }

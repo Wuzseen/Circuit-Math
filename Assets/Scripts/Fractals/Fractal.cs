@@ -64,7 +64,7 @@ public class Fractal : MonoBehaviour {
 		for (int i = 0; i < colors.Length; i++) {
 			materials[i] = new Material(material);
 			materials[i].color = colors[Random.Range(0,colors.Length)];
-			fractalColors.Add(materials[i],new FractalColor(materials[i].color,new Color32(76,150,20,255)));
+			fractalColors.Add(materials[i],new FractalColor(materials[i].color,new Color32(76,200,20,255)));
 		}
 	}
 
@@ -132,36 +132,30 @@ public class Fractal : MonoBehaviour {
 		HighlightBG(Random.Range(0,materials.Length));
 	}
 
+	public void TurnAllOn() {
+		foreach(Material m in materials) {
+			FractalColor fc = fractalColors[m];
+			fc.on = true;
+			Go.to (m,.6f, new GoTweenConfig().materialColor(fc.endColor));
+		}
+	}
+	
+	public void TurnAllOff() {
+		foreach(Material m in materials) {
+			FractalColor fc = fractalColors[m];
+			fc.on = false;
+			Go.to (m,.6f, new GoTweenConfig().materialColor(fc.startColor));
+		}
+	}
+
 	public void HighlightBG(int index) {
 		FractalColor fc = fractalColors[materials[index]];
 		if(fc.on) {
 			Go.to (materials[index],.6f, new GoTweenConfig().materialColor(fc.startColor));
-//			materials[index].colorTo(2f,fc.startColor);
 			fc.on = false;
 		} else {
 			Go.to (materials[index],.6f, new GoTweenConfig().materialColor(fc.endColor));
 			fc.on = true;
-		}
-//		StartCoroutine("ColorTo",materials[0]);
-//		StartCoroutine("ColorTo",materials[index,1]);
-	}
-
-	IEnumerator ColorTo(Material m) {
-		FractalColor fc = fractalColors[m];
-		Color sc, tc;
-		sc = m.color;
-		if(fc.on) {
-			tc = fc.startColor;
-		} else {
-			tc = fc.endColor;
-		}
-		fc.on = !fc.on;
-		float time = 1f;
-		float elapsed = 0f;
-		while(elapsed < time) {
-			m.color = Color.Lerp(sc,tc, elapsed/time);
-			elapsed += Time.deltaTime;
-			yield return 0;
 		}
 	}
 }

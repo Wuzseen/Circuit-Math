@@ -171,7 +171,7 @@ public class Randomizer : MonoBehaviour {
 		foreach(GameObject op in operators)
 		{
 			op.SetActive(false);
-			//NGUITools.Destroy(op);
+//			NGUITools.Destroy(op);
 		}
 		operators.Clear();
 	}

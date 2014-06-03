@@ -9,12 +9,15 @@ public class SolverArgs {
 }
 
 public class SolverCheck : MonoBehaviour {
+	public static SolverCheck Instance;
 	public delegate void SolverEventHandler(SolverArgs args);
 	public static event SolverEventHandler OnSolveAttempt;
+	public UILabel winText;
 	private Randomizer randomizer;
 	private Game game;
 	// Use this for initialization
 	void Start () {
+		Instance = this;
 		randomizer = GameObject.FindObjectOfType<Randomizer>() as Randomizer;
 		game = GameObject.FindObjectOfType<Game>() as Game;
 	}
@@ -24,26 +27,30 @@ public class SolverCheck : MonoBehaviour {
 	
 	}
 
+	IEnumerator newPuzzleRoutine() {
+		Go.to (winText,.2f,new GoTweenConfig().floatProp("alpha",255f));
+		yield return new WaitForSeconds(2f);
+		Fractal.FractalMaster.TurnAllOff();
+		randomizer.GetRandomEquation();
+		Go.to (winText,.2f,new GoTweenConfig().floatProp("alpha",0f));
+	}
+
 	public void CheckSolve() {
-		bool solved = Game.Instance.IsSolved();
+		bool solved = game.IsSolved();
 		if(solved) {
 			print ("SOLVED");
-			randomizer.GetRandomEquation();
+			Fractal.FractalMaster.TurnAllOn();
+			StartCoroutine("newPuzzleRoutine");
+//			randomizer.GetRandomEquation();
 			if (ProgressTracker.ActiveGameMode == GameMode.Timed)
 			{
 				game.CorrectSolution();
 			}
 		} else {
-			print ("WRONG");
+			Fractal.FractalMaster.RandomBGChange();
 		}
 		if(OnSolveAttempt != null) {
 			OnSolveAttempt(new SolverArgs(solved));
-		}
-	}
-
-	void OnPress (bool isDown) {
-		if(isDown == false) {
-			CheckSolve();
 		}
 	}
 }

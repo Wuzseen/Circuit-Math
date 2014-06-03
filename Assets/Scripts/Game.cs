@@ -37,7 +37,6 @@ public class Game : MonoBehaviour {
 				timeLabel.gameObject.SetActive(false);
 			if (countLabel != null)
 				countLabel.gameObject.SetActive(false);
-			Debug.Log (ProgressTracker.ActiveGameMode);
 		}
 	}
 

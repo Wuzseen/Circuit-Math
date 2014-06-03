@@ -360,7 +360,7 @@ MonoBehaviour:
     relative: 1
     absolute: 0
   updateAnchors: 1
-  mColor: {r: 0, g: .0896549225, b: 1, a: 1}
+  mColor: {r: .86206913, g: 1, b: 0, a: 1}
   mPivot: 4
   mWidth: 100
   mHeight: 100
