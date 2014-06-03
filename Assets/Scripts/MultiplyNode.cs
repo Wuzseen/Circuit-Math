@@ -6,6 +6,7 @@ public class MultiplyNode : GameNode {
 	// Use this for initialization
 	
 	protected override void Start () {
+		this.tag = "OperatorNode";
 		label.text = "X";
 		base.Start();
 	}

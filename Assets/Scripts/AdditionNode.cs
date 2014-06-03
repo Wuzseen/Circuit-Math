@@ -7,6 +7,7 @@ public class AdditionNode : GameNode {
 	// Use this for initialization
 	
 	protected override void Start () {
+		this.tag = "OperatorNode";
 		label.text = "+";
 		base.Start();
 	}

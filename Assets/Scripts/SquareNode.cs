@@ -6,6 +6,7 @@ public class SquareNode : GameNode {
 	// Use this for initialization
 	
 	protected override void Start () {
+		this.tag = "OperatorNode";
 		label.text = "^2";
 		base.Start();
 	}

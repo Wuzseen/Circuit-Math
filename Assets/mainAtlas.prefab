@@ -41,8 +41,8 @@ MonoBehaviour:
   material: {fileID: 2100000, guid: 9ba13823700f33d4e87ed0c0a636151c, type: 2}
   mSprites:
   - name: badButtonDown
-    x: 0
-    y: 255
+    x: 172
+    y: 128
     width: 128
     height: 128
     borderLeft: 0
@@ -54,8 +54,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: badButtonUp
-    x: 0
-    y: 384
+    x: 301
+    y: 128
     width: 128
     height: 128
     borderLeft: 0
@@ -66,9 +66,22 @@ MonoBehaviour:
     paddingRight: 0
     paddingTop: 0
     paddingBottom: 0
+  - name: hand
+    x: 0
+    y: 92
+    width: 171
+    height: 164
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 3
+    paddingRight: 8
+    paddingTop: 4
+    paddingBottom: 4
   - name: nodecircle
-    x: 129
-    y: 448
+    x: 0
+    y: 27
     width: 64
     height: 64
     borderLeft: 0
@@ -80,8 +93,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: protoButtonDown
-    x: 129
-    y: 319
+    x: 65
+    y: 27
     width: 64
     height: 64
     borderLeft: 6
@@ -93,8 +106,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: protoButtonUp
-    x: 0
-    y: 190
+    x: 172
+    y: 63
     width: 64
     height: 64
     borderLeft: 6
