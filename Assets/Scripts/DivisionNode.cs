@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System;
 using System.Collections;
 
 public class DivisionNode : GameNode {
@@ -27,25 +28,10 @@ public class DivisionNode : GameNode {
 			for (int i = 0; i < inputNodes.Count; i++) {
 				inputs[i] = inputNodes[i].NodeValue;
 			}
-
-			// sort the inputs in descending order
-			bool done = false;
-			while (!done) {
-				done = true;
-				for (int i = 0; i < inputs.Length - 1; i++) {
-					if (inputs[i] < inputs[i + 1]) {
-						int temp = inputs[i];
-						inputs[i] = inputs[i + 1];
-						inputs[i + 1] = temp;
-						done = false;
-					}
-				}
-			}
-
-			// divide by each input, discard remainders
-			int quotient = inputs[0];
-			for (int i = 1; i < inputs.Length; i++) {
-				quotient = quotient / inputs[i];
+			Array.Sort(inputs);
+			int quotient = inputs[inputs.Length - 1];
+			for (int i = inputs.Length - 2; i >= 0; i--) {
+				quotient /= inputs[i];
 			}
 
 			return quotient;

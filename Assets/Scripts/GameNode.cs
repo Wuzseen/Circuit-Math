@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -44,14 +44,14 @@ public class GameNode : MonoBehaviour {
 			foreach(DragNode n in outputDragNodes) {
 				n.ParentNode = this;
 				n.IsInput = false;
-				n.Sprite.color = NodeColor;
+				n.NodeSprite.color = NodeColor;
 			}
 		}
 		if(inputDragNodes != null) {
 			foreach(DragNode n in inputDragNodes) {
 				n.ParentNode = this;
 				n.IsInput = true;
-				n.Sprite.color = NodeColor;
+				n.NodeSprite.color = NodeColor;
 			}
 		}
 		Randomizer.OnPuzzleCreated += NewPuzzle;

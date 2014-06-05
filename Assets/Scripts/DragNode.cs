@@ -27,7 +27,7 @@ public class DragNode : MonoBehaviour {
 	}
 
 	private UISprite sprite;
-	public UISprite Sprite {
+	public UISprite NodeSprite {
 		get {
 			if(sprite == null) {
 				sprite = this.GetComponent<UISprite>();
@@ -51,6 +51,7 @@ public class DragNode : MonoBehaviour {
 		scaleTween.enabled = false;
 		NodeID = nodeIDCount;
 		nodeIDCount++;
+		this.NodeSprite.name = "nodeBG";
 	}
 
 	void OnPress (bool isDown) {

@@ -110,7 +110,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100006}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -705.264832, y: 276.815643, z: 0}
+  m_LocalPosition: {x: -634, y: 0, z: 0}
   m_LocalScale: {x: 1.00007999, y: 1.00007999, z: 1.00007999}
   m_Children:
   - {fileID: 400000}
@@ -179,13 +179,13 @@ MonoBehaviour:
   mPivot: 4
   mWidth: 32
   mHeight: 32
-  mDepth: 2
+  mDepth: 5
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
   aspectRatio: 1
   mAtlas: {fileID: 11400000, guid: b25d8c9f3da12e04681874ec891f28c2, type: 2}
-  mSpriteName: nodecircle
+  mSpriteName: nodeBG
   mType: 0
   mFillDirection: 4
   mFillAmount: 1
@@ -222,36 +222,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   leftAnchor:
-    target: {fileID: 400006}
-    relative: .5
+    target: {fileID: 0}
+    relative: 0
     absolute: -17
   rightAnchor:
-    target: {fileID: 400006}
-    relative: .5
+    target: {fileID: 0}
+    relative: 1
     absolute: 17
   bottomAnchor:
-    target: {fileID: 400006}
+    target: {fileID: 0}
     relative: 0
     absolute: 19
   topAnchor:
-    target: {fileID: 400006}
+    target: {fileID: 0}
     relative: 1
     absolute: -19
   updateAnchors: 1
   mColor: {r: 0, g: 0, b: 0, a: 1}
   mPivot: 4
-  mWidth: 34
-  mHeight: 62
-  mDepth: 1
+  mWidth: 30
+  mHeight: 50
+  mDepth: 4
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
-  aspectRatio: .54838711
+  aspectRatio: .600000024
   keepCrispWhenShrunk: 1
-  mTrueTypeFont: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+  mTrueTypeFont: {fileID: 12800000, guid: 05ae96eed7ac8ce4d89fd48bcc0f5a05, type: 3}
   mFont: {fileID: 0}
-  mText: 12
-  mFontSize: 61
+  mText: 6
+  mFontSize: 50
   mFontStyle: 0
   mAlignment: 0
   mEncoding: 1
@@ -260,7 +260,7 @@ MonoBehaviour:
   mEffectColor: {r: 0, g: 0, b: 0, a: 1}
   mSymbols: 1
   mEffectDistance: {x: 1, y: 1}
-  mOverflow: 0
+  mOverflow: 2
   mMaterial: {fileID: 0}
   mApplyGradient: 0
   mGradientTop: {r: 1, g: 1, b: 1, a: 1}
@@ -286,31 +286,31 @@ MonoBehaviour:
   leftAnchor:
     target: {fileID: 0}
     relative: 0
-    absolute: 0
+    absolute: 36
   rightAnchor:
     target: {fileID: 0}
-    relative: 1
-    absolute: 0
+    relative: 0
+    absolute: 136
   bottomAnchor:
     target: {fileID: 0}
-    relative: 0
-    absolute: 0
+    relative: .5
+    absolute: -50
   topAnchor:
     target: {fileID: 0}
-    relative: 1
-    absolute: 0
+    relative: .5
+    absolute: 50
   updateAnchors: 0
   mColor: {r: 0, g: .786764741, b: .591430128, a: 1}
   mPivot: 4
   mWidth: 100
   mHeight: 100
-  mDepth: 0
+  mDepth: 3
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
   aspectRatio: 1
   mAtlas: {fileID: 11400000, guid: b25d8c9f3da12e04681874ec891f28c2, type: 2}
-  mSpriteName: nodecircle
+  mSpriteName: nodeBG
   mType: 0
   mFillDirection: 4
   mFillAmount: 1

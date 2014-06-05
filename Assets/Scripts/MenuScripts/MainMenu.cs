@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class MainMenu : MonoBehaviour {
+	public UILabel tapToStart;
 	public UISprite diffSelect;
 	public ProgressionScene psObject;
 	public UISprite BeginGame;
@@ -73,6 +74,7 @@ public class MainMenu : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if(Input.anyKeyDown) {
+			tapToStart.gameObject.SetActive(false);
 			Go.to (diffSelect,.4f, new GoTweenConfig().floatProp("alpha", 1f));
 		}
 	}

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class Game : MonoBehaviour {
 	private static Game instance;
 	public bool timedMode = false; 
+	public GameObject countCube;
 	public float initialTimerLength = 120; //seconds
 	public float completedBonusTime = 3;
 	public int correctAnswers;
@@ -24,19 +25,30 @@ public class Game : MonoBehaviour {
 		if (defeatLabel != null)
 			defeatLabel.gameObject.SetActive(false);
 
-		if (ProgressTracker.ActiveGameMode == GameMode.Timed)
-		{
+		if (ProgressTracker.ActiveGameMode == GameMode.Timed) {
 			timedMode = true;
 			timeLeft = initialTimerLength;
 			timeNoted = Time.time;
-
-
-		}
-		else{
+			StartCoroutine("TimeModeTimer");
+		} else{
 			if (timeLabel != null)
 				timeLabel.gameObject.SetActive(false);
 			if (countLabel != null)
 				countLabel.gameObject.SetActive(false);
+		}
+	}
+
+	IEnumerator TimeModeTimer() {
+		while(true) {
+			timeLeft -= Time.deltaTime;
+			if(timeLeft <= 0) {
+				timeLeft = 0;
+				GameOver();
+			}
+			if(timeLeft != null) {
+				timeLabel.text = Mathf.CeilToInt(timeLeft).ToString();
+			}
+			yield return 0;
 		}
 	}
 
@@ -52,26 +64,14 @@ public class Game : MonoBehaviour {
 		return true;
 	}
 
-	void Update()
-	{
-		if (timedMode)
-		{
-			timeLeft -= (Time.time - timeNoted);
-			timeNoted = Time.time;
-			if (timeLabel != null)
-				timeLabel.text = Mathf.CeilToInt(timeLeft-1).ToString();
-			if (timeLeft <= 0)
-			{
-				GameOver();
-			}
-		}
-	}
 	public void CorrectSolution()
 	{
 		timeLeft +=  completedBonusTime;
 		correctAnswers++;
-		if (countLabel != null)
+		Go.to (countCube.transform,.3f,new GoTweenConfig().rotation(new Vector3(0,90 * correctAnswers,0)));
+		if (countLabel != null) {
 			countLabel.text = correctAnswers.ToString();
+		}
 	}
 
 	void GameOver()
