@@ -16,6 +16,7 @@ public class Randomizer : MonoBehaviour {
 	public Difficulty level = Difficulty.Easy;
 	public int maxNum = 50;
 	public int maxNumOperators = 1;
+	public int minNumOperators = 1;
 	public GameInputNode inputNode;
 	public GoalNode goal;
 	public Transform nodePos1;
@@ -26,11 +27,31 @@ public class Randomizer : MonoBehaviour {
 	private List<GameObject> operators;
 	private bool ignoreFirstDiffSwap = true;
 	private OperatorFactory operatorFactory;
-	void Start()
+	void Awake()
 	{
 		operatorFactory = new OperatorFactory();
 		operators = new List<GameObject>();
 		level = DifficultyMode.SelectedDifficulty;
+		minNumOperators = 1;
+		if (level == Difficulty.Easy)
+		{
+			maxNumOperators =1;
+		}
+		else if (level == Difficulty.Medium)
+		{
+			maxNumOperators = 2;
+		}
+		else if (level == Difficulty.Hard)
+		{
+			maxNumOperators = 3;
+		}
+		else if(level == Difficulty.Expert)
+		{
+			minNumOperators = 2;
+			maxNumOperators = 4;
+		}
+		Debug.Log ("Difficutly = " + level);
+
 		GetRandomEquation();
 	}
 	void Update()
@@ -80,14 +101,15 @@ public class Randomizer : MonoBehaviour {
 		//Only using one operator right now
 		Operator op = operatorFactory.GetRandomOperator(level);
 		int solution = op.GetRandomValidSolution(10, maxNum);
-		AddSolution (solution);
+		Debug.Log (solution);
 		List<Operator> ops = new List<Operator>();
 
 //		AddOperator(op, nodePos1.position);
 		ops.Add(op);
 		EquationOperand equation = GetRandomEquation(solution, op);
 
-		int numOperators = Random.Range(1, maxNumOperators + 1);
+		int numOperators = Random.Range(minNumOperators, maxNumOperators + 1);
+		Debug.Log (numOperators + " - " + minNumOperators);
 		for(int i = 1; i < numOperators; i++){
 			int operandNumber = Random.Range(0, 2);
 			EquationOperand eo; 
@@ -109,6 +131,8 @@ public class Randomizer : MonoBehaviour {
 		AddOps(ops);
 		List<int> inputValues = GetInputValues(equation, new List<int>());
 		AddInputs(inputValues);
+		AddSolution (equation.GetValue());
+
 		Debug.Log(equation.ToString() + " = " + equation.GetValue());
 		if(OnPuzzleCreated != null) {
 			OnPuzzleCreated(new RandomizerArgs(this));
@@ -199,6 +223,7 @@ public class Randomizer : MonoBehaviour {
 		if (equation.operand1.GetType() == typeof(ValueOperand))
 		{
 			inputVals.Add(equation.operand1.GetValue());
+			Debug.Log (equation.operand1.GetValue());
 		}
 		else
 		{
@@ -208,6 +233,8 @@ public class Randomizer : MonoBehaviour {
 		if (equation.operand2.GetType() == typeof(ValueOperand))
 		{
 			inputVals.Add (equation.operand2.GetValue());
+			Debug.Log (equation.operand2.GetValue());
+
 		}
 		else
 		{
