@@ -82,7 +82,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 125806963}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: InputNodes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -385,9 +385,9 @@ GameObject:
   m_Component:
   - 4: {fileID: 204585872}
   - 114: {fileID: 204585876}
-  - 135: {fileID: 204585875}
   - 114: {fileID: 204585874}
   - 114: {fileID: 204585873}
+  - 65: {fileID: 204585875}
   m_Layer: 5
   m_Name: Out1
   m_TagString: Untagged
@@ -460,18 +460,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NodeID: 0
   IsInput: 0
---- !u!135 &204585875
-SphereCollider:
+--- !u!65 &204585875
+BoxCollider:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 13500000, guid: e9d057e41c91b1c4087c6945f6300441,
+  m_PrefabParentObject: {fileID: 6500000, guid: e9d057e41c91b1c4087c6945f6300441,
     type: 2}
   m_PrefabInternal: {fileID: 657046006}
   m_GameObject: {fileID: 204585871}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 16.4200001
+  m_Size: {x: 32, y: 32, z: 0}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &204585876
 MonoBehaviour:
@@ -507,7 +507,7 @@ MonoBehaviour:
   mWidth: 32
   mHeight: 32
   mDepth: 5
-  autoResizeBoxCollider: 0
+  autoResizeBoxCollider: 1
   hideIfOffScreen: 0
   keepAspectRatio: 0
   aspectRatio: 1
@@ -760,18 +760,18 @@ MonoBehaviour:
   updateAnchors: 1
   mColor: {r: 0, g: 0, b: 0, a: 1}
   mPivot: 4
-  mWidth: 30
-  mHeight: 50
+  mWidth: 22
+  mHeight: 36
   mDepth: 4
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
-  aspectRatio: .600000024
+  aspectRatio: .611111104
   keepCrispWhenShrunk: 1
   mTrueTypeFont: {fileID: 12800000, guid: 05ae96eed7ac8ce4d89fd48bcc0f5a05, type: 3}
   mFont: {fileID: 0}
   mText: 8
-  mFontSize: 50
+  mFontSize: 35
   mFontStyle: 0
   mAlignment: 0
   mEncoding: 1
@@ -815,7 +815,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 273901801}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 533.842041, y: 273.5, z: 0}
+  m_LocalPosition: {x: 581.653748, y: 273.5, z: 0}
   m_LocalScale: {x: 1.00007999, y: 1.00007999, z: 1.00007999}
   m_Children:
   - {fileID: 2057168301}
@@ -1058,7 +1058,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400006, guid: e9d057e41c91b1c4087c6945f6300441, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -562.842041
+      value: -610.653748
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: e9d057e41c91b1c4087c6945f6300441, type: 2}
       propertyPath: m_LocalPosition.y
@@ -1123,6 +1123,18 @@ Prefab:
     - target: {fileID: 11400010, guid: e9d057e41c91b1c4087c6945f6300441, type: 2}
       propertyPath: topAnchor.absolute
       value: -150
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: e9d057e41c91b1c4087c6945f6300441, type: 2}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: e9d057e41c91b1c4087c6945f6300441, type: 2}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: e9d057e41c91b1c4087c6945f6300441, type: 2}
+      propertyPath: m_Layer
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e9d057e41c91b1c4087c6945f6300441, type: 2}
@@ -1227,7 +1239,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400006, guid: e9d057e41c91b1c4087c6945f6300441, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -562.842041
+      value: -610.653748
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: e9d057e41c91b1c4087c6945f6300441, type: 2}
       propertyPath: m_LocalPosition.y
@@ -1272,6 +1284,18 @@ Prefab:
     - target: {fileID: 100006, guid: e9d057e41c91b1c4087c6945f6300441, type: 2}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: e9d057e41c91b1c4087c6945f6300441, type: 2}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: e9d057e41c91b1c4087c6945f6300441, type: 2}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: e9d057e41c91b1c4087c6945f6300441, type: 2}
+      propertyPath: m_Layer
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e9d057e41c91b1c4087c6945f6300441, type: 2}
@@ -1376,7 +1400,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400006, guid: e9d057e41c91b1c4087c6945f6300441, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -562.842041
+      value: -610.653748
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: e9d057e41c91b1c4087c6945f6300441, type: 2}
       propertyPath: m_LocalPosition.y
@@ -1441,6 +1465,18 @@ Prefab:
     - target: {fileID: 11400010, guid: e9d057e41c91b1c4087c6945f6300441, type: 2}
       propertyPath: topAnchor.absolute
       value: -110
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: e9d057e41c91b1c4087c6945f6300441, type: 2}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: e9d057e41c91b1c4087c6945f6300441, type: 2}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: e9d057e41c91b1c4087c6945f6300441, type: 2}
+      propertyPath: m_Layer
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e9d057e41c91b1c4087c6945f6300441, type: 2}
@@ -1547,8 +1583,8 @@ GameObject:
   - 4: {fileID: 677744427}
   - 114: {fileID: 677744431}
   - 114: {fileID: 677744430}
-  - 135: {fileID: 677744429}
   - 114: {fileID: 677744428}
+  - 65: {fileID: 677744429}
   m_Layer: 5
   m_Name: GameInputNode
   m_TagString: Untagged
@@ -1563,8 +1599,8 @@ Transform:
   m_PrefabInternal: {fileID: 657046006}
   m_GameObject: {fileID: 677744426}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -562.842041, y: 200, z: 0}
-  m_LocalScale: {x: 1.00007999, y: 1.00007999, z: 1.00007999}
+  m_LocalPosition: {x: -610.653748, y: 200, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1723680247}
   - {fileID: 1060246622}
@@ -1588,18 +1624,18 @@ MonoBehaviour:
   outputNodeParent: {fileID: 1723680247}
   label: {fileID: 1060246623}
   inputValue: 12
---- !u!135 &677744429
-SphereCollider:
+--- !u!65 &677744429
+BoxCollider:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 13500002, guid: e9d057e41c91b1c4087c6945f6300441,
+  m_PrefabParentObject: {fileID: 6500002, guid: e9d057e41c91b1c4087c6945f6300441,
     type: 2}
   m_PrefabInternal: {fileID: 657046006}
   m_GameObject: {fileID: 677744426}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 51.0900002
+  m_Size: {x: 100, y: 100, z: 0}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &677744430
 MonoBehaviour:
@@ -1649,7 +1685,7 @@ MonoBehaviour:
   mWidth: 100
   mHeight: 100
   mDepth: 3
-  autoResizeBoxCollider: 0
+  autoResizeBoxCollider: 1
   hideIfOffScreen: 0
   keepAspectRatio: 0
   aspectRatio: 1
@@ -1724,18 +1760,18 @@ MonoBehaviour:
   updateAnchors: 1
   mColor: {r: 0, g: 0, b: 0, a: 1}
   mPivot: 4
-  mWidth: 30
-  mHeight: 50
+  mWidth: 22
+  mHeight: 36
   mDepth: 4
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
-  aspectRatio: .600000024
+  aspectRatio: .611111104
   keepCrispWhenShrunk: 1
   mTrueTypeFont: {fileID: 12800000, guid: 05ae96eed7ac8ce4d89fd48bcc0f5a05, type: 3}
   mFont: {fileID: 0}
   mText: 6
-  mFontSize: 50
+  mFontSize: 35
   mFontStyle: 0
   mAlignment: 0
   mEncoding: 1
@@ -1765,9 +1801,9 @@ GameObject:
   m_Component:
   - 4: {fileID: 1054748107}
   - 114: {fileID: 1054748111}
-  - 135: {fileID: 1054748110}
   - 114: {fileID: 1054748109}
   - 114: {fileID: 1054748108}
+  - 65: {fileID: 1054748110}
   m_Layer: 5
   m_Name: Out1
   m_TagString: Untagged
@@ -1840,18 +1876,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NodeID: 0
   IsInput: 0
---- !u!135 &1054748110
-SphereCollider:
+--- !u!65 &1054748110
+BoxCollider:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 13500000, guid: e9d057e41c91b1c4087c6945f6300441,
+  m_PrefabParentObject: {fileID: 6500000, guid: e9d057e41c91b1c4087c6945f6300441,
     type: 2}
   m_PrefabInternal: {fileID: 416248929}
   m_GameObject: {fileID: 1054748106}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 16.4200001
+  m_Size: {x: 32, y: 32, z: 0}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1054748111
 MonoBehaviour:
@@ -1887,7 +1923,7 @@ MonoBehaviour:
   mWidth: 32
   mHeight: 32
   mDepth: 5
-  autoResizeBoxCollider: 0
+  autoResizeBoxCollider: 1
   hideIfOffScreen: 0
   keepAspectRatio: 0
   aspectRatio: 1
@@ -1962,18 +1998,18 @@ MonoBehaviour:
   updateAnchors: 1
   mColor: {r: 0, g: 0, b: 0, a: 1}
   mPivot: 4
-  mWidth: 30
-  mHeight: 50
+  mWidth: 22
+  mHeight: 36
   mDepth: 4
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
-  aspectRatio: .600000024
+  aspectRatio: .611111104
   keepCrispWhenShrunk: 1
   mTrueTypeFont: {fileID: 12800000, guid: 05ae96eed7ac8ce4d89fd48bcc0f5a05, type: 3}
   mFont: {fileID: 0}
   mText: 6
-  mFontSize: 50
+  mFontSize: 35
   mFontStyle: 0
   mAlignment: 0
   mEncoding: 1
@@ -2074,7 +2110,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1208304311}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: OutputNodes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2128,7 +2164,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400006, guid: 639de2d14577b124cbde0a9056a23185, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 565.842041
+      value: 613.653748
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: 639de2d14577b124cbde0a9056a23185, type: 2}
       propertyPath: m_LocalPosition.y
@@ -2212,19 +2248,31 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11400008, guid: 639de2d14577b124cbde0a9056a23185, type: 2}
       propertyPath: mHeight
-      value: 50
+      value: 36
       objectReference: {fileID: 0}
     - target: {fileID: 11400008, guid: 639de2d14577b124cbde0a9056a23185, type: 2}
       propertyPath: mWidth
-      value: 30
+      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 11400008, guid: 639de2d14577b124cbde0a9056a23185, type: 2}
       propertyPath: aspectRatio
-      value: .600000024
+      value: .611111104
       objectReference: {fileID: 0}
     - target: {fileID: 11400004, guid: 639de2d14577b124cbde0a9056a23185, type: 2}
       propertyPath: mSpriteName
       value: nodeBG
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: 639de2d14577b124cbde0a9056a23185, type: 2}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: 639de2d14577b124cbde0a9056a23185, type: 2}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 639de2d14577b124cbde0a9056a23185, type: 2}
+      propertyPath: m_Layer
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 639de2d14577b124cbde0a9056a23185, type: 2}
@@ -2289,18 +2337,18 @@ MonoBehaviour:
   updateAnchors: 1
   mColor: {r: 0, g: 0, b: 0, a: 1}
   mPivot: 4
-  mWidth: 30
-  mHeight: 50
+  mWidth: 22
+  mHeight: 36
   mDepth: 4
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
-  aspectRatio: .600000024
+  aspectRatio: .611111104
   keepCrispWhenShrunk: 1
   mTrueTypeFont: {fileID: 12800000, guid: 05ae96eed7ac8ce4d89fd48bcc0f5a05, type: 3}
   mFont: {fileID: 0}
   mText: 6
-  mFontSize: 50
+  mFontSize: 35
   mFontStyle: 0
   mAlignment: 0
   mEncoding: 1
@@ -2910,8 +2958,8 @@ GameObject:
   - 4: {fileID: 1482759054}
   - 114: {fileID: 1482759058}
   - 114: {fileID: 1482759057}
-  - 135: {fileID: 1482759056}
   - 114: {fileID: 1482759055}
+  - 65: {fileID: 1482759056}
   m_Layer: 5
   m_Name: GoalNode
   m_TagString: Untagged
@@ -2926,8 +2974,8 @@ Transform:
   m_PrefabInternal: {fileID: 1342466832}
   m_GameObject: {fileID: 1482759053}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 565.842041, y: 0, z: 0}
-  m_LocalScale: {x: .99992007, y: .99992007, z: .99992007}
+  m_LocalPosition: {x: 613.653748, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 125806963}
   - {fileID: 230424209}
@@ -2951,18 +2999,18 @@ MonoBehaviour:
   outputNodeParent: {fileID: 0}
   label: {fileID: 230424210}
   GoalValue: 78
---- !u!135 &1482759056
-SphereCollider:
+--- !u!65 &1482759056
+BoxCollider:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 13500002, guid: 639de2d14577b124cbde0a9056a23185,
+  m_PrefabParentObject: {fileID: 6500002, guid: 639de2d14577b124cbde0a9056a23185,
     type: 2}
   m_PrefabInternal: {fileID: 1342466832}
   m_GameObject: {fileID: 1482759053}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 51.0900002
+  m_Size: {x: 100, y: 100, z: 0}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1482759057
 MonoBehaviour:
@@ -3012,7 +3060,7 @@ MonoBehaviour:
   mWidth: 100
   mHeight: 100
   mDepth: 3
-  autoResizeBoxCollider: 0
+  autoResizeBoxCollider: 1
   hideIfOffScreen: 0
   keepAspectRatio: 0
   aspectRatio: 1
@@ -3038,9 +3086,9 @@ GameObject:
   m_Component:
   - 4: {fileID: 1546897009}
   - 114: {fileID: 1546897010}
-  - 135: {fileID: 1546897012}
   - 114: {fileID: 1546897011}
   - 114: {fileID: 1546897013}
+  - 65: {fileID: 1546897012}
   m_Layer: 5
   m_Name: Out1
   m_TagString: Untagged
@@ -3093,7 +3141,7 @@ MonoBehaviour:
   mWidth: 32
   mHeight: 32
   mDepth: 5
-  autoResizeBoxCollider: 0
+  autoResizeBoxCollider: 1
   hideIfOffScreen: 0
   keepAspectRatio: 0
   aspectRatio: 1
@@ -3124,18 +3172,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NodeID: 0
   IsInput: 0
---- !u!135 &1546897012
-SphereCollider:
+--- !u!65 &1546897012
+BoxCollider:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 13500000, guid: e9d057e41c91b1c4087c6945f6300441,
+  m_PrefabParentObject: {fileID: 6500000, guid: e9d057e41c91b1c4087c6945f6300441,
     type: 2}
   m_PrefabInternal: {fileID: 462690404}
   m_GameObject: {fileID: 1546897008}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 16.4200001
+  m_Size: {x: 32, y: 32, z: 0}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1546897013
 MonoBehaviour:
@@ -3274,7 +3322,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1565603454}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: OutputNodes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3363,7 +3411,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1723680247}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: OutputNodes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3392,8 +3440,8 @@ GameObject:
   - 4: {fileID: 1738165871}
   - 114: {fileID: 1738165875}
   - 114: {fileID: 1738165874}
-  - 135: {fileID: 1738165873}
   - 114: {fileID: 1738165872}
+  - 65: {fileID: 1738165873}
   m_Layer: 5
   m_Name: GameInputNode
   m_TagString: Untagged
@@ -3408,8 +3456,8 @@ Transform:
   m_PrefabInternal: {fileID: 416248929}
   m_GameObject: {fileID: 1738165870}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -562.842041, y: -200, z: 0}
-  m_LocalScale: {x: 1.00007999, y: 1.00007999, z: 1.00007999}
+  m_LocalPosition: {x: -610.653748, y: -200, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1565603454}
   - {fileID: 866935993}
@@ -3433,18 +3481,18 @@ MonoBehaviour:
   outputNodeParent: {fileID: 1565603454}
   label: {fileID: 866935994}
   inputValue: 12
---- !u!135 &1738165873
-SphereCollider:
+--- !u!65 &1738165873
+BoxCollider:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 13500002, guid: e9d057e41c91b1c4087c6945f6300441,
+  m_PrefabParentObject: {fileID: 6500002, guid: e9d057e41c91b1c4087c6945f6300441,
     type: 2}
   m_PrefabInternal: {fileID: 416248929}
   m_GameObject: {fileID: 1738165870}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 51.0900002
+  m_Size: {x: 100, y: 100, z: 0}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1738165874
 MonoBehaviour:
@@ -3494,7 +3542,7 @@ MonoBehaviour:
   mWidth: 100
   mHeight: 100
   mDepth: 3
-  autoResizeBoxCollider: 0
+  autoResizeBoxCollider: 1
   hideIfOffScreen: 0
   keepAspectRatio: 0
   aspectRatio: 1
@@ -3700,8 +3748,8 @@ GameObject:
   - 4: {fileID: 1800591012}
   - 114: {fileID: 1800591013}
   - 114: {fileID: 1800591014}
-  - 135: {fileID: 1800591015}
   - 114: {fileID: 1800591016}
+  - 65: {fileID: 1800591015}
   m_Layer: 5
   m_Name: GameInputNode
   m_TagString: Untagged
@@ -3716,8 +3764,8 @@ Transform:
   m_PrefabInternal: {fileID: 462690404}
   m_GameObject: {fileID: 1800591011}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -562.842041, y: 0, z: 0}
-  m_LocalScale: {x: 1.00007999, y: 1.00007999, z: 1.00007999}
+  m_LocalPosition: {x: -610.653748, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1208304311}
   - {fileID: 1350539837}
@@ -3756,7 +3804,7 @@ MonoBehaviour:
   mWidth: 100
   mHeight: 100
   mDepth: 3
-  autoResizeBoxCollider: 0
+  autoResizeBoxCollider: 1
   hideIfOffScreen: 0
   keepAspectRatio: 0
   aspectRatio: 1
@@ -3787,18 +3835,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   restriction: 0
   cloneOnDrag: 0
---- !u!135 &1800591015
-SphereCollider:
+--- !u!65 &1800591015
+BoxCollider:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 13500002, guid: e9d057e41c91b1c4087c6945f6300441,
+  m_PrefabParentObject: {fileID: 6500002, guid: e9d057e41c91b1c4087c6945f6300441,
     type: 2}
   m_PrefabInternal: {fileID: 462690404}
   m_GameObject: {fileID: 1800591011}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 51.0900002
+  m_Size: {x: 100, y: 100, z: 0}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1800591016
 MonoBehaviour:
@@ -3828,9 +3876,9 @@ GameObject:
   m_Component:
   - 4: {fileID: 1806018503}
   - 114: {fileID: 1806018506}
-  - 135: {fileID: 1806018505}
   - 114: {fileID: 1806018504}
   - 114: {fileID: 1806018507}
+  - 65: {fileID: 1806018505}
   m_Layer: 5
   m_Name: In1
   m_TagString: Untagged
@@ -3863,18 +3911,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NodeID: 0
   IsInput: 0
---- !u!135 &1806018505
-SphereCollider:
+--- !u!65 &1806018505
+BoxCollider:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 13500000, guid: 639de2d14577b124cbde0a9056a23185,
+  m_PrefabParentObject: {fileID: 6500000, guid: 639de2d14577b124cbde0a9056a23185,
     type: 2}
   m_PrefabInternal: {fileID: 1342466832}
   m_GameObject: {fileID: 1806018502}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 16.4200001
+  m_Size: {x: 32, y: 32, z: 0}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1806018506
 MonoBehaviour:
@@ -3910,7 +3958,7 @@ MonoBehaviour:
   mWidth: 32
   mHeight: 32
   mDepth: 5
-  autoResizeBoxCollider: 0
+  autoResizeBoxCollider: 1
   hideIfOffScreen: 0
   keepAspectRatio: 0
   aspectRatio: 1

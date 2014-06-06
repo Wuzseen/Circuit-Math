@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class NodeLine : MonoBehaviour {
+	private float nodeZpos = .3f;
 	public static NodeLine CreateNewLine(Transform a, Transform b, Color c1, Color c2) {
 		GameObject o = new GameObject();
 		o.layer = 8; // GUI/gamelayer
@@ -44,9 +45,9 @@ public class NodeLine : MonoBehaviour {
 			if(_a == null || _b == null)
 				return;
 			Vector3 p1 = _a.position;
-			p1.z = 0;
+			p1.z = nodeZpos;
 			Vector3 p2 = _b.position;
-			p2.z = 0;
+			p2.z = nodeZpos;
 
 			List<Vector3> points = new List<Vector3>();
 			points.Add(p1);
@@ -65,12 +66,12 @@ public class NodeLine : MonoBehaviour {
 //				float yBot = Mathf.Lerp (p1.y,p2.y,.85f);
 				// Need points at p1x,p1y xMinus,p1y yTop,center yBot,center xPlus,p2y p2x,p2y
 //				points.Add(new Vector3(p1.x,p1.y,0f));
-				points.Add(new Vector3(xMinus,p1.y,0f));
-				Vector3 yTopV = new Vector3(center,yTop,0f);
-				Vector3 yBotV = new Vector3(center,yBot,0f);
+				points.Add(new Vector3(xMinus,p1.y,nodeZpos));
+				Vector3 yTopV = new Vector3(center,yTop,nodeZpos);
+				Vector3 yBotV = new Vector3(center,yBot,nodeZpos);
 				points.Add(yTopV);
 				points.Add(yBotV);
-				points.Add(new Vector3(xPlus,p2.y,0f));
+				points.Add(new Vector3(xPlus,p2.y,nodeZpos));
 //				points.Add(new Vector3(p2.x,p2.y,0f));
 //				points.Add(new Vector3(.98f*(p2.x - p1.x)/2 + p1.x,p1.y,0));
 //				points.Add(new Vector3(center, p1.y, 0));

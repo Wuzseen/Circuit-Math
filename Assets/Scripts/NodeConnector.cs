@@ -83,12 +83,12 @@ public class NodeConnector : MonoBehaviour {
 
 	public void NewConnection(NodeConnectionArgs args) {
 		if(CompatibleNodes(args.StartNode,args.EndNode)) {
+			RegisterConnection(new NodeConnection(args.StartNode,args.EndNode));
 			if(args.StartNode.IsInput == false) {
 				args.EndNode.ParentNode.AddInputNode(args.StartNode.ParentNode);
 			} else {
 				args.StartNode.ParentNode.AddInputNode(args.EndNode.ParentNode);
 			}
-			RegisterConnection(new NodeConnection(args.StartNode,args.EndNode));
 		} else {
 			print ("Not connectible, input -> output and output -> input only between two unique nodes.");
 		}
