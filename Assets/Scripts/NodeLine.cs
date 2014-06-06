@@ -48,7 +48,10 @@ public class NodeLine : MonoBehaviour {
 			p1.z = nodeZpos;
 			Vector3 p2 = _b.position;
 			p2.z = nodeZpos;
-
+			if(A.gameObject.activeInHierarchy == false || B.gameObject.activeInHierarchy == false) {
+				Destroy(this.gameObject);
+				return;
+			}
 			List<Vector3> points = new List<Vector3>();
 			points.Add(p1);
 			if (Mathf.Abs(p2.y - p1.y) > 0.01f) {

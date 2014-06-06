@@ -29,7 +29,7 @@ public class MultiplicationOperator : Operator {
 		List<int> factors = new List<int>();
 		for (int i = 2; i < product/2+1; i++)
 		{
-			Debug.Log (i);
+//			Debug.Log (i);
 
 			if (product % i == 0)
 			{

@@ -25,6 +25,10 @@ public class CueHelper : MonoBehaviour {
 			}
 			GameInputNode[] giNodes = GameObject.FindObjectsOfType(typeof(GameInputNode)) as GameInputNode[];
 			GameObject[] opNodes = GameObject.FindGameObjectsWithTag("OperatorNode");
+			if(opNodes.Length == 0) {
+				yield return 0;
+				continue;
+			}
 			GameObject randomOpGO = opNodes[Random.Range(0,opNodes.Length)];
 			GameInputNode giNode = giNodes[Random.Range(0,giNodes.Length)];
 			GameNode opNode = randomOpGO.GetComponent<GameNode>();
