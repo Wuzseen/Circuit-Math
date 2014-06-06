@@ -81,8 +81,10 @@ public class Randomizer : MonoBehaviour {
 		Operator op = operatorFactory.GetRandomOperator(level);
 		int solution = op.GetRandomValidSolution(10, maxNum);
 		AddSolution (solution);
+		List<Operator> ops = new List<Operator>();
 
-		AddOperator(op, nodePos1.position);
+//		AddOperator(op, nodePos1.position);
+		ops.Add(op);
 		EquationOperand equation = GetRandomEquation(solution, op);
 
 		int numOperators = Random.Range(1, maxNumOperators + 1);
@@ -91,18 +93,20 @@ public class Randomizer : MonoBehaviour {
 			EquationOperand eo; 
 			if (operandNumber == 0)
 			{
-				eo = GetRandomEquation(equation.operand1.GetValue(), operatorFactory.GetRandomOperator(Difficulty.Easy));
+				eo = GetRandomEquation(equation.operand1.GetValue(), operatorFactory.GetRandomOperator(level));
 				equation.operand1 = eo;
-				AddOperator(eo._operator, nodePos2.position);
+				ops.Add(eo._operator);
+//				AddOperator(eo._operator, nodePos2.position);
 			}
 			else if (op.GetType() != typeof(SquareOperator)) // make sure not to change the 2 in x ^ 2
 			{
-				eo = GetRandomEquation(equation.operand2.GetValue(), operatorFactory.GetRandomOperator(Difficulty.Easy));
+				eo = GetRandomEquation(equation.operand2.GetValue(), operatorFactory.GetRandomOperator(level));
 				equation.operand2 = eo;
-				AddOperator(eo._operator, nodePos2.position);
+				ops.Add(eo._operator);
+//				AddOperator(eo._operator, nodePos2.position);
 			}
 		}
-
+		AddOps(ops);
 		List<int> inputValues = GetInputValues(equation, new List<int>());
 		AddInputs(inputValues);
 		Debug.Log(equation.ToString() + " = " + equation.GetValue());
@@ -120,6 +124,37 @@ public class Randomizer : MonoBehaviour {
 		goal.SetGoalValue(solution);
 
 	}
+
+	public void AddOps(List<Operator> ops) {
+		float yOffset = .3f;
+		float xOffset = .5f;
+		if(ops.Count == 1) {
+			AddOperator(ops[0],Vector3.zero);
+			return;
+		}
+
+		if(ops.Count == 2) {
+			AddOperator(ops[0],new Vector3(0,-yOffset,0));
+			AddOperator(ops[1],new Vector3(0,yOffset,0));
+			return;
+		}
+
+		if(ops.Count == 3) {
+			AddOperator(ops[0],new Vector3(-xOffset,yOffset,0));
+			AddOperator(ops[1],new Vector3(xOffset,0,0));
+			AddOperator(ops[2],new Vector3(-xOffset,-yOffset,0));
+			return;
+		}
+		
+		if(ops.Count == 4) {
+			AddOperator(ops[0],new Vector3(-xOffset,yOffset,0));
+			AddOperator(ops[1],new Vector3(xOffset,yOffset,0));
+			AddOperator(ops[2],new Vector3(-xOffset,-yOffset,0));
+			AddOperator(ops[3],new Vector3(xOffset,-yOffset,0));
+			return;
+		}
+	}
+
 	public void AddOperator(Operator op, Vector3 position)
 	{
 //		print (op.nodePath);
@@ -127,10 +162,7 @@ public class Randomizer : MonoBehaviour {
 		GameObject go = Instantiate(pre) as GameObject; //So it's not pointing to a Prefab - It's pointing to a clone
 		GameObject g = NGUITools.AddChild(this.GameNodeCanvas, go);
 		Destroy(go);
-		Vector3 pos = g.transform.position;
-		pos.x += Random.Range(-.4f,.4f);
-		pos.y += Random.Range(-.4f,.4f);
-		g.transform.position = pos;
+		g.transform.position = position;
 		operators.Add(g);
 //		Instantiate(Resources.Load(op.nodePath), position, Quaternion.identity);
 	}
