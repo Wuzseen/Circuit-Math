@@ -11,7 +11,7 @@ public class NodeConnectionArgs {
 	}
 }
 
-[RequireComponent (typeof(SphereCollider))]
+//[RequireComponent (typeof(SphereCollider))]
 public class DragNode : MonoBehaviour {
 	private static int nodeIDCount;
 	public int NodeID; // used for hashing
@@ -44,7 +44,8 @@ public class DragNode : MonoBehaviour {
 	// Use this for initialization
 
 	void Start () {
-		((SphereCollider)this.collider).radius = 22f;
+//		((SphereCollider)this.collider).radius = 22f;
+		((BoxCollider)this.collider).size = new Vector3(66f,39f,.3f);
 		scaleTween = GetComponent<TweenScale>();
 		scaleTween.to = this.transform.localScale * 1.2f;
 		scaleTween.duration = .3f;
@@ -64,7 +65,6 @@ public class DragNode : MonoBehaviour {
 			if(OnPrematureEnd != null) {
 				OnPrematureEnd(new NodeConnectionArgs(this,null));
 			}
-//			scaleTween.PlayReverse();
 		}
 	}
 

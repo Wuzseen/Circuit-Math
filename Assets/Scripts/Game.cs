@@ -52,7 +52,7 @@ public class Game : MonoBehaviour {
 				timeLeft = 0;
 				GameOver();
 			}
-			if(timeLeft != null) {
+			if(timeLabel != null) {
 				timeLabel.text = Mathf.CeilToInt(timeLeft).ToString();
 			}
 			yield return 0;

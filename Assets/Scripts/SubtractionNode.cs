@@ -8,7 +8,7 @@ public class SubtractionNode : GameNode {
 	
 	protected override void Start () {
 		this.tag = "OperatorNode";
-		label.text = "-";
+		label.text = "";
 
 		base.Start();
 	}

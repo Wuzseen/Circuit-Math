@@ -80,7 +80,7 @@ MonoBehaviour:
     paddingTop: 4
     paddingBottom: 4
   - name: menuDown
-    x: 301
+    x: 172
     y: 351
     width: 128
     height: 32
@@ -93,7 +93,7 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: menuUp
-    x: 172
+    x: 301
     y: 351
     width: 128
     height: 32
@@ -192,6 +192,71 @@ MonoBehaviour:
     borderRight: 6
     borderTop: 6
     borderBottom: 6
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: sign__0000_plus
+    x: 129
+    y: 150
+    width: 41
+    height: 35
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: sign__0001_minus
+    x: 430
+    y: 373
+    width: 41
+    height: 9
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: sign__0002_div
+    x: 129
+    y: 186
+    width: 49
+    height: 40
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: sign__0003_mult
+    x: 451
+    y: 292
+    width: 55
+    height: 55
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: sign__0004_square
+    x: 129
+    y: 227
+    width: 52
+    height: 55
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
     paddingLeft: 0
     paddingRight: 0
     paddingTop: 0

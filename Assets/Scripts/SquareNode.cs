@@ -7,7 +7,7 @@ public class SquareNode : GameNode {
 	
 	protected override void Start () {
 		this.tag = "OperatorNode";
-		label.text = "^2";
+		label.text = "";
 		base.Start();
 	}
 	
