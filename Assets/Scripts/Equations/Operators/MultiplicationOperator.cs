@@ -37,6 +37,9 @@ public class MultiplicationOperator : Operator {
 				factors.Add(i);
 			}
 		}
+		if (factors.Count < 1) {
+			return product;
+		}
 		int randomNum = Random.Range(0, factors.Count);
 	
 		Debug.Log(randomNum + "-" + factors.Count);
