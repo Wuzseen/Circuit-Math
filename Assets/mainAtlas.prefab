@@ -41,7 +41,7 @@ MonoBehaviour:
   material: {fileID: 2100000, guid: 9ba13823700f33d4e87ed0c0a636151c, type: 2}
   mSprites:
   - name: badButtonDown
-    x: 301
+    x: 172
     y: 384
     width: 128
     height: 128
@@ -54,8 +54,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: badButtonUp
-    x: 0
-    y: 219
+    x: 301
+    y: 384
     width: 128
     height: 128
     borderLeft: 0
@@ -79,15 +79,41 @@ MonoBehaviour:
     paddingRight: 8
     paddingTop: 4
     paddingBottom: 4
-  - name: nodeBG
-    x: 172
-    y: 384
+  - name: menuDown
+    x: 301
+    y: 351
     width: 128
-    height: 128
+    height: 32
     borderLeft: 0
     borderRight: 0
     borderTop: 0
     borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: menuUp
+    x: 172
+    y: 351
+    width: 128
+    height: 32
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: nodeBG
+    x: 0
+    y: 219
+    width: 128
+    height: 128
+    borderLeft: 20
+    borderRight: 20
+    borderTop: 20
+    borderBottom: 20
     paddingLeft: 0
     paddingRight: 0
     paddingTop: 0
@@ -105,6 +131,45 @@ MonoBehaviour:
     paddingRight: 0
     paddingTop: 0
     paddingBottom: 0
+  - name: pauseButton
+    x: 0
+    y: 119
+    width: 100
+    height: 99
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 1
+  - name: pausePanelButton
+    x: 129
+    y: 283
+    width: 256
+    height: 64
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 0
+  - name: playButton
+    x: 0
+    y: 19
+    width: 100
+    height: 99
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
+    paddingTop: 0
+    paddingBottom: 1
   - name: protoButtonDown
     x: 430
     y: 383
@@ -119,8 +184,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: protoButtonUp
-    x: 0
-    y: 154
+    x: 386
+    y: 283
     width: 64
     height: 64
     borderLeft: 6

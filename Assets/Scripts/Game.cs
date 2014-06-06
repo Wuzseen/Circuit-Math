@@ -14,6 +14,7 @@ public class Game : MonoBehaviour {
 	public UILabel timeLabel;
 	public UILabel countLabel;
 	public UILabel defeatLabel;
+	public UILabel restartLabel;
 	public static Game Instance {
 		get { return instance; }
 	}
@@ -35,6 +36,12 @@ public class Game : MonoBehaviour {
 				timeLabel.gameObject.SetActive(false);
 			if (countLabel != null)
 				countLabel.gameObject.SetActive(false);
+		}
+	}
+
+	void Start() {
+		if(ProgressTracker.ActiveGameMode != GameMode.Timed) {
+			restartLabel.text = "New Puzzle";
 		}
 	}
 

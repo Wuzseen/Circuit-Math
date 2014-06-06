@@ -20,10 +20,11 @@ public class Randomizer : MonoBehaviour {
 	public GoalNode goal;
 	public Transform nodePos1;
 	public Transform nodePos2;
+	public UIPopupList difficultyPopup;
 	public List<GameInputNode> inputNodes;
 //	private int inputNodesAdded = 0;
 	private List<GameObject> operators;
-
+	private bool ignoreFirstDiffSwap = true;
 	private OperatorFactory operatorFactory;
 	void Start()
 	{
@@ -38,6 +39,24 @@ public class Randomizer : MonoBehaviour {
 		{
 			GetRandomEquation();
 		}
+	}
+
+	public void DifficultySwap() {
+		if(ignoreFirstDiffSwap) {
+			ignoreFirstDiffSwap = false;
+			return;
+		}
+		if(difficultyPopup.value == "Easy") {
+			DifficultyMode.SelectedDifficulty = Difficulty.Easy;
+		} else if(difficultyPopup.value == "Medium") {
+			DifficultyMode.SelectedDifficulty = Difficulty.Medium;
+		} else if(difficultyPopup.value == "Hard") {
+			DifficultyMode.SelectedDifficulty = Difficulty.Hard;
+		} else {
+			DifficultyMode.SelectedDifficulty = Difficulty.Expert;
+		}
+		Application.LoadLevel("main");
+		ignoreFirstDiffSwap = true;
 	}
 
 	void ResetLevel()
