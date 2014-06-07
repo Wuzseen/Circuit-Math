@@ -841,6 +841,10 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: d65b5b8b42ae8f54780d300fb8a1b82b, type: 2}
+      propertyPath: showDebug
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d65b5b8b42ae8f54780d300fb8a1b82b, type: 2}
   m_RootGameObject: {fileID: 298576169}
@@ -866,7 +870,7 @@ GameObject:
   m_IsActive: 1
 --- !u!82 &298576170
 AudioSource:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_PrefabParentObject: {fileID: 8200000, guid: d65b5b8b42ae8f54780d300fb8a1b82b,
     type: 2}
   m_PrefabInternal: {fileID: 288684551}
@@ -925,7 +929,7 @@ AudioSource:
     m_PostInfinity: 2
 --- !u!82 &298576171
 AudioSource:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_PrefabParentObject: {fileID: 8200002, guid: d65b5b8b42ae8f54780d300fb8a1b82b,
     type: 2}
   m_PrefabInternal: {fileID: 288684551}
@@ -1034,7 +1038,7 @@ MonoBehaviour:
     maxDelay: 0
     delay: 0
   crossDuration: 0
-  showDebug: 1
+  showDebug: 0
   offTheBGM: 0
   isPaused: 0
   movingOnFromSong: 0
@@ -1064,7 +1068,7 @@ MonoBehaviour:
   SFXObjectLifetime: 10
 --- !u!4 &298576173
 Transform:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 10
   m_PrefabParentObject: {fileID: 400000, guid: d65b5b8b42ae8f54780d300fb8a1b82b, type: 2}
   m_PrefabInternal: {fileID: 288684551}
   m_GameObject: {fileID: 298576169}
@@ -2574,7 +2578,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11400002, guid: 7c3a28b051e872b448d4808cfcf9199c, type: 2}
       propertyPath: mWidth
-      value: 170
+      value: 172
       objectReference: {fileID: 0}
     - target: {fileID: 11400002, guid: 7c3a28b051e872b448d4808cfcf9199c, type: 2}
       propertyPath: mHeight
@@ -2582,7 +2586,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11400002, guid: 7c3a28b051e872b448d4808cfcf9199c, type: 2}
       propertyPath: aspectRatio
-      value: 1.88888884
+      value: 1.91111112
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 7c3a28b051e872b448d4808cfcf9199c, type: 2}
       propertyPath: m_LocalPosition.x

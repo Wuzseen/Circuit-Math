@@ -25,7 +25,7 @@ public class MultiplicationOperator : Operator {
 	}
 	private int GetRandomFactor(int product)
 	{
-		Debug.Log (product);
+//		Debug.Log (product);
 		List<int> factors = new List<int>();
 		for (int i = 2; i < product/2+1; i++)
 		{
@@ -42,7 +42,7 @@ public class MultiplicationOperator : Operator {
 		}
 		int randomNum = Random.Range(0, factors.Count);
 	
-		Debug.Log(randomNum + "-" + factors.Count);
+//		Debug.Log(randomNum + "-" + factors.Count);
 
 		return factors[randomNum];
 	}

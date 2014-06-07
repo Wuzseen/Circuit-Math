@@ -101,7 +101,7 @@ public class Randomizer : MonoBehaviour {
 		//Only using one operator right now
 		Operator op = operatorFactory.GetRandomOperator(level);
 		int solution = op.GetRandomValidSolution(10, maxNum);
-		Debug.Log (solution);
+//		Debug.Log (solution);
 		List<Operator> ops = new List<Operator>();
 
 //		AddOperator(op, nodePos1.position);
@@ -109,7 +109,7 @@ public class Randomizer : MonoBehaviour {
 		EquationOperand equation = GetRandomEquation(solution, op);
 
 		int numOperators = Random.Range(minNumOperators, maxNumOperators + 1);
-		Debug.Log (numOperators + " - " + minNumOperators);
+//		Debug.Log (numOperators + " - " + minNumOperators);
 		for(int i = 1; i < numOperators; i++){
 			int operandNumber = Random.Range(0, 2);
 			EquationOperand eo; 
@@ -223,7 +223,7 @@ public class Randomizer : MonoBehaviour {
 		if (equation.operand1.GetType() == typeof(ValueOperand))
 		{
 			inputVals.Add(equation.operand1.GetValue());
-			Debug.Log (equation.operand1.GetValue());
+//			Debug.Log (equation.operand1.GetValue());
 		}
 		else
 		{
@@ -233,7 +233,7 @@ public class Randomizer : MonoBehaviour {
 		if (equation.operand2.GetType() == typeof(ValueOperand))
 		{
 			inputVals.Add (equation.operand2.GetValue());
-			Debug.Log (equation.operand2.GetValue());
+//			Debug.Log (equation.operand2.GetValue());
 
 		}
 		else

@@ -1653,7 +1653,6 @@ GameObject:
   - 114: {fileID: 600657976}
   - 114: {fileID: 600657973}
   - 65: {fileID: 600657975}
-  - 114: {fileID: 600657978}
   m_Layer: 5
   m_Name: GameInputNode
   m_TagString: GameNode
@@ -1771,17 +1770,6 @@ MonoBehaviour:
   rightType: 1
   bottomType: 1
   topType: 1
---- !u!114 &600657978
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 600657972}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 79402440dd41741eb8ed7cb7ea36178b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &657046006
 Prefab:
   m_ObjectHideFlags: 0
@@ -2169,7 +2157,7 @@ MonoBehaviour:
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
-  aspectRatio: 2.20000005
+  aspectRatio: 2
   keepCrispWhenShrunk: 1
   mTrueTypeFont: {fileID: 12800000, guid: 05ae96eed7ac8ce4d89fd48bcc0f5a05, type: 3}
   mFont: {fileID: 0}
