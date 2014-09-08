@@ -21,6 +21,9 @@ public class GameNode : MonoBehaviour {
 	public Transform inputNodeParent;
 	protected int activeInputNodeCount;
 	protected List<DragNode> inputDragNodes;
+	public List<DragNode> InputNodes {
+		get { return inputDragNodes; }
+	}
 	protected List<GameNode> inputNodes = new List<GameNode>();
 
 	public Transform outputNodeParent;
@@ -43,6 +46,7 @@ public class GameNode : MonoBehaviour {
 		if(outputDragNodes != null) {
 			foreach(DragNode n in outputDragNodes) {
 				n.ParentNode = this;
+				n.name += "OUT";
 				n.IsInput = false;
 				n.NodeSprite.color = NodeColor;
 			}
@@ -51,6 +55,7 @@ public class GameNode : MonoBehaviour {
 			foreach(DragNode n in inputDragNodes) {
 				n.ParentNode = this;
 				n.IsInput = true;
+				n.name += "IN";
 				n.NodeSprite.color = NodeColor;
 			}
 		}
@@ -98,6 +103,22 @@ public class GameNode : MonoBehaviour {
 		print (this.gameObject.name);
 	}
 
-//	void OnDrag (Vector2 delta) {
-//	}
+	protected void OnDrop (GameObject drag) {
+		DragNode gn = (DragNode)drag.GetComponent(typeof(DragNode)); // Starting point
+		if(gn == null) {
+			return;
+		} else {
+			List<DragNode> otherInputNodes = InputNodes;
+			if(otherInputNodes == null || otherInputNodes.Count == 0) {
+				return;
+			}
+			foreach(DragNode dn in otherInputNodes) {
+				if(dn.IsInConnection) {
+					continue;
+				}
+				dn.GameNodeMakeConnect(gn);
+				break;
+			}
+		}
+	}
 }

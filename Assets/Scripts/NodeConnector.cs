@@ -89,6 +89,8 @@ public class NodeConnector : MonoBehaviour {
 			} else {
 				args.StartNode.ParentNode.AddInputNode(args.EndNode.ParentNode);
 			}
+			args.StartNode.IsInConnection = true;
+			args.EndNode.IsInConnection = true;
 		} else {
 			print ("Not connectible, input -> output and output -> input only between two unique nodes.");
 		}
@@ -126,6 +128,8 @@ public class NodeConnector : MonoBehaviour {
 		}
 		nc.a.ResetScale();
 		nc.b.ResetScale();
+		nc.a.IsInConnection = false;
+		nc.b.IsInConnection = false;
 		connections.Remove(nc);
 		if(lr != null)
 			Destroy (lr.gameObject);

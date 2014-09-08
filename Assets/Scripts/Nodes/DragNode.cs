@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class NodeConnectionArgs {
 	public DragNode StartNode;
@@ -17,6 +18,7 @@ public class DragNode : MonoBehaviour {
 	public int NodeID; // used for hashing
 	private GameNode parentNode;
 	public bool IsInput; // false = output node
+	public bool IsInConnection = false;
 	public GameNode ParentNode {
 		get {
 			return parentNode;
@@ -52,7 +54,7 @@ public class DragNode : MonoBehaviour {
 		scaleTween.enabled = false;
 		NodeID = nodeIDCount;
 		nodeIDCount++;
-		this.NodeSprite.name = "nodeBG";
+		//this.NodeSprite.name = "nodeBG";
 	}
 
 	void OnPress (bool isDown) {
@@ -73,8 +75,12 @@ public class DragNode : MonoBehaviour {
 	}
 
 	void OnDrop (GameObject drag) {
+		DragNode other = (DragNode)drag.GetComponent(typeof(DragNode));
+		ConnectMake(other);
+	}
+
+	void ConnectMake(DragNode other) {
 		if(OnConnectionMade != null) {
-			DragNode other = (DragNode)drag.GetComponent(typeof(DragNode));
 			if(other != null && other != this) {
 				OnConnectionMade(new NodeConnectionArgs(other,this));
 				SoundManager.PlaySFX(SoundManager.LoadFromGroup("ConnectionSounds"));
@@ -82,5 +88,9 @@ public class DragNode : MonoBehaviour {
 				Particlizer.Instance.Shock(transform.position);
 			}
 		}
+	}
+
+	public void GameNodeMakeConnect (DragNode otherNode) {
+		ConnectMake(otherNode);
 	}
 }
