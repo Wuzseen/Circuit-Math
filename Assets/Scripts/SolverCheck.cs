@@ -43,11 +43,8 @@ public class SolverCheck : MonoBehaviour {
 			print ("SOLVED");
 			Fractal.FractalMaster.TurnAllOn();
 			StartCoroutine("newPuzzleRoutine");
-//			randomizer.GetRandomEquation();
-			if (ProgressTracker.ActiveGameMode == GameMode.Timed)
-			{
-				game.CorrectSolution();
-			}
+			//			randomizer.GetRandomEquation();
+			game.CorrectSolution();
 		} else {
 			Fractal.FractalMaster.RandomBGChange();
 		}

@@ -19,6 +19,7 @@ public class FractalColor {
 
 public class Fractal : MonoBehaviour {
 	public static Fractal FractalMaster;
+	public static List<Fractal> NonMasterFractals = new List<Fractal>();
 	public static int usedColor = 0;
 	public Dictionary<Material,FractalColor> fractalColors;
 	public float RotateSpeed = 15f;
@@ -69,33 +70,65 @@ public class Fractal : MonoBehaviour {
 	}
 
 	private void Start() {
-		Create ();
+		StartCoroutine(Create ());
 	}
 
-	public void Create () {
+	public IEnumerator Create () {
 		if (materials == null) {
 			InitializeMaterials();
 		}
 		if(depth > 0)
 			transform.Rotate(Random.Range (-maxTwist, maxTwist), 0f, 0f);
-		gameObject.AddComponent<MeshFilter>().mesh = mesh;
-		//		gameObject.AddComponent<MeshRenderer>().material = materials[Random.Range(0,materials.Length)];
-				gameObject.AddComponent<MeshRenderer>().material = materials[usedColor];
+		if(this.GetComponent<MeshFilter>() == null) {
+			gameObject.AddComponent<MeshFilter>().mesh = mesh;
+			gameObject.AddComponent<MeshRenderer>().material = materials[usedColor];
+		}
 		if(depth < maxDepth) {
 			for (int i = 0; i < childDirections.Length; i++) {
 				if(Random.value < spawnProbability || depth == 0) {
-					new GameObject("Fractal Child").AddComponent<Fractal>().Initialize(this, i);
+					Fractal go = new GameObject("Fractal Child").AddComponent<Fractal>();
+					go.Initialize(this, i);
+					Vector3 scale = go.transform.localScale;
+					go.transform.scaleFrom(.2f,Vector3.zero);
+					yield return new WaitForSeconds(.2f);
 				}
 			}
 		}
-		if(depth == 0) {
-//			StartCoroutine("InputHandler");			
+		if(depth == 0) {		
 			FractalMaster = this;
+		} else {
+			NonMasterFractals.Add(this);
 		}
 		usedColor ++;
 		if(usedColor >= materials.Length) {
 			usedColor = 0;
 		}
+	}
+
+	public void Despawn(float t) {
+		transform.scaleTo(t,Vector3.zero);
+		Destroy(this.gameObject,t);
+	}
+
+	void OnDestroy() {
+		NonMasterFractals.Remove(this);
+	}
+
+	public static void Recreate() {
+		print ("Regeneration");
+		FractalMaster.DelayStart();
+	}
+
+	IEnumerator Regenerate() {
+		foreach(Fractal f in NonMasterFractals) {
+			f.Despawn(Random.Range(.1f,.3f));
+		}
+		yield return new WaitForSeconds(.3f);
+		Start ();
+	}
+
+	void DelayStart() {
+		StartCoroutine(Regenerate());
 	}
 
 	private void Initialize(Fractal parent, int childIndex) {
@@ -146,6 +179,7 @@ public class Fractal : MonoBehaviour {
 			fc.on = false;
 			Go.to (m,.6f, new GoTweenConfig().materialColor(fc.startColor));
 		}
+		Recreate();
 	}
 
 	public void HighlightBG(int index) {

@@ -36,12 +36,10 @@ public class Game : MonoBehaviour {
 			timeLeft = initialTimerLength;
 			timeNoted = Time.time;
 			StartCoroutine("TimeModeTimer");
-		} else{
+		} else {
+			timeLeft = 0f;
 			if (timeLabel != null) {
 				timeLabel.gameObject.SetActive(false);
-			}
-			if (countLabel != null) {
-				countLabel.gameObject.SetActive(false);
 			}
 			if (progress != null) {
 				progress.gameObject.SetActive(false);
@@ -90,6 +88,7 @@ public class Game : MonoBehaviour {
 	{
 		timeLeft +=  completedBonusTime;
 		correctAnswers++;
+		print("Correct");
 		Go.to (countCube.transform,.3f,new GoTweenConfig().rotation(new Vector3(0,90 * correctAnswers,0)));
 		if (countLabel != null) {
 			countLabel.text = correctAnswers.ToString();

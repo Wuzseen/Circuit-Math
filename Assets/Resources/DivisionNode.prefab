@@ -152,6 +152,7 @@ Transform:
   - {fileID: 400002}
   - {fileID: 400012}
   m_Father: {fileID: 400006}
+  m_RootOrder: 0
 --- !u!4 &400002
 Transform:
   m_ObjectHideFlags: 1
@@ -163,6 +164,7 @@ Transform:
   m_LocalScale: {x: .00215517241, y: .00215517241, z: .00215517241}
   m_Children: []
   m_Father: {fileID: 400000}
+  m_RootOrder: 0
 --- !u!4 &400004
 Transform:
   m_ObjectHideFlags: 1
@@ -174,6 +176,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 400006}
+  m_RootOrder: 3
 --- !u!4 &400006
 Transform:
   m_ObjectHideFlags: 1
@@ -189,6 +192,7 @@ Transform:
   - {fileID: 400010}
   - {fileID: 400004}
   m_Father: {fileID: 0}
+  m_RootOrder: 0
 --- !u!4 &400008
 Transform:
   m_ObjectHideFlags: 1
@@ -200,6 +204,7 @@ Transform:
   m_LocalScale: {x: .00215517241, y: .00215517241, z: .00215517241}
   m_Children: []
   m_Father: {fileID: 400010}
+  m_RootOrder: 0
 --- !u!4 &400010
 Transform:
   m_ObjectHideFlags: 1
@@ -212,6 +217,7 @@ Transform:
   m_Children:
   - {fileID: 400008}
   m_Father: {fileID: 400006}
+  m_RootOrder: 2
 --- !u!4 &400012
 Transform:
   m_ObjectHideFlags: 1
@@ -223,6 +229,7 @@ Transform:
   m_LocalScale: {x: .00215517241, y: .00215517241, z: .00215517241}
   m_Children: []
   m_Father: {fileID: 400000}
+  m_RootOrder: 1
 --- !u!4 &400014
 Transform:
   m_ObjectHideFlags: 1
@@ -234,6 +241,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 400006}
+  m_RootOrder: 1
 --- !u!65 &6500000
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -280,7 +288,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 100, y: 100, z: 0}
+  m_Size: {x: 180, y: 115, z: 0}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &11400000
 MonoBehaviour:
@@ -295,6 +303,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NodeID: 0
   IsInput: 0
+  IsInConnection: 0
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -515,7 +524,7 @@ MonoBehaviour:
   mWidth: 100
   mHeight: 100
   mDepth: 0
-  autoResizeBoxCollider: 1
+  autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
   aspectRatio: 1
@@ -595,6 +604,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NodeID: 0
   IsInput: 0
+  IsInConnection: 0
 --- !u!114 &11400016
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -658,6 +668,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NodeID: 0
   IsInput: 0
+  IsInConnection: 0
 --- !u!114 &11400020
 MonoBehaviour:
   m_ObjectHideFlags: 1

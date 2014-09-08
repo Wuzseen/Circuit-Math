@@ -14,7 +14,7 @@ public class DifficultyProgress {
 }
 
 public enum GameMode {
-	Career,
+	Power,
 	Relax,
 	Timed
 }

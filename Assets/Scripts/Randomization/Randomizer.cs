@@ -27,7 +27,7 @@ public class Randomizer : MonoBehaviour {
 	private List<GameObject> operators;
 	private bool ignoreFirstDiffSwap = true;
 	private OperatorFactory operatorFactory;
-	void Awake()
+	void Start()
 	{
 		operatorFactory = new OperatorFactory();
 		operators = new List<GameObject>();
@@ -95,20 +95,34 @@ public class Randomizer : MonoBehaviour {
 		}
 	}
 
+	int mod() {
+		print ("POWER MODDING");
+		return maxNum + (Game.Instance.correctAnswers * Game.Instance.correctAnswers);
+	}
+
 	public void GetRandomEquation()
 	{
 		ResetLevel();
 		//Only using one operator right now
 		Operator op = operatorFactory.GetRandomOperator(level);
-		int solution = op.GetRandomValidSolution(10, maxNum);
+		int solution = 0;
+		if(ProgressTracker.ActiveGameMode == GameMode.Power) {
+			solution = op.GetRandomValidSolution(10, mod());
+		} else {
+			solution = op.GetRandomValidSolution(10, maxNum);
+		}
 //		Debug.Log (solution);
 		List<Operator> ops = new List<Operator>();
 
 //		AddOperator(op, nodePos1.position);
 		ops.Add(op);
 		EquationOperand equation = GetRandomEquation(solution, op);
-
-		int numOperators = Random.Range(minNumOperators, maxNumOperators + 1);
+		int max = maxNumOperators;
+		int numOperators = Random.Range(minNumOperators, max + 1);
+		if(ProgressTracker.ActiveGameMode == GameMode.Power) {
+			int gmod = max + Game.Instance.correctAnswers / 3;
+			numOperators = Mathf.Min(4,gmod);
+		}
 //		Debug.Log (numOperators + " - " + minNumOperators);
 		for(int i = 1; i < numOperators; i++){
 			int operandNumber = Random.Range(0, 2);

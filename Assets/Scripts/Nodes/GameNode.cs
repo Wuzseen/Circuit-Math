@@ -21,7 +21,7 @@ public class GameNode : MonoBehaviour {
 	public Transform inputNodeParent;
 	protected int activeInputNodeCount;
 	protected List<DragNode> inputDragNodes;
-	public List<DragNode> InputNodes {
+	public List<DragNode> InputDragNodes {
 		get { return inputDragNodes; }
 	}
 	protected List<GameNode> inputNodes = new List<GameNode>();
@@ -29,6 +29,9 @@ public class GameNode : MonoBehaviour {
 	public Transform outputNodeParent;
 	protected int activeOutputNodeCount;
 	protected List<DragNode> outputDragNodes;
+	public List<DragNode> OuputDragNodes {
+		get { return outputDragNodes; }
+	}
 
 	private UIDragDropItem dragScript;
 	public UILabel label;
@@ -108,11 +111,14 @@ public class GameNode : MonoBehaviour {
 		if(gn == null) {
 			return;
 		} else {
-			List<DragNode> otherInputNodes = InputNodes;
-			if(otherInputNodes == null || otherInputNodes.Count == 0) {
+			List<DragNode> otherNodes = InputDragNodes;
+			if(gn.IsInput) {
+				otherNodes = OuputDragNodes;
+			}
+			if(otherNodes == null || otherNodes.Count == 0) {
 				return;
 			}
-			foreach(DragNode dn in otherInputNodes) {
+			foreach(DragNode dn in otherNodes) {
 				if(dn.IsInConnection) {
 					continue;
 				}

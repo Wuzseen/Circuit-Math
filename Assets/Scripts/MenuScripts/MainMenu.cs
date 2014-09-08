@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -53,8 +53,6 @@ public class MainMenu : MonoBehaviour {
 		if(modeLine != null) {
 			MakeModeLine(modeLine.B);
 		}
-		if(ProgressTracker.ActiveGameMode == GameMode.Career)
-			psObject.UpdateToCurrentDifficulty();
 	}
 	
 	public void MakeModeLine(Transform t) {
