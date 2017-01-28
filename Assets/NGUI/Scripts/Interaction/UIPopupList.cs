@@ -464,7 +464,7 @@ public class UIPopupList : UIWidgetContainer
 
 			if (snd.trigger == UIPlaySound.Trigger.OnClick)
 			{
-				NGUITools.PlaySound(snd.audioClip, snd.volume, 1f);
+				NGUITools.PlaySound(snd.GetComponent<AudioClip>(), snd.volume, 1f);
 			}
 		}
 	}

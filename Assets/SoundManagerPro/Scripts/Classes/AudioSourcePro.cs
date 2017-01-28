@@ -634,17 +634,17 @@ public class AudioSourcePro : MonoBehaviour {
 	
 	public float pan {
 		get {
-			return audioSource.pan;
+			return GetComponent<AudioSource>().panStereo;
 		} set {
-			audioSource.pan = value;
+			GetComponent<AudioSource>().panStereo = value;
 		}
 	}
 	
 	public float panLevel {
 		get {
-			return audioSource.panLevel;
+			return audioSource.panStereo;
 		} set {
-			audioSource.panLevel = value;
+			audioSource.panStereo = value;
 		}
 	}
 	

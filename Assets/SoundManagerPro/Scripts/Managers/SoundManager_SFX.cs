@@ -390,10 +390,10 @@ public partial class SoundManager : Singleton<SoundManager> {
         if ((clip == null) || (gO == null))
             return null;
         
-        if (gO.audio == null)
+        if (gO.GetComponent<AudioSource>() == null)
             gO.AddComponent<AudioSource>();
 		
-		return PlaySFX(gO.audio, clip, looping, delay, volume, pitch, runOnEndFunction, duckingSetting, duckVolume, duckPitch);
+		return PlaySFX(gO.GetComponent<AudioSource>(), clip, looping, delay, volume, pitch, runOnEndFunction, duckingSetting, duckVolume, duckPitch);
     }
 	
 	/// <summary>
@@ -439,10 +439,10 @@ public partial class SoundManager : Singleton<SoundManager> {
         if ((!SoundManager.ClipNameIsValid(clipName)) || (gO == null))
             return null;
         
-        if (gO.audio == null)
+        if (gO.GetComponent<AudioSource>() == null)
             gO.AddComponent<AudioSource>();
 		
-		return PlaySFX(gO.audio, SoundManager.Load(clipName), looping, delay, volume, pitch, runOnEndFunction, duckingSetting, duckVolume, duckPitch);
+		return PlaySFX(gO.GetComponent<AudioSource>(), SoundManager.Load(clipName), looping, delay, volume, pitch, runOnEndFunction, duckingSetting, duckVolume, duckPitch);
     }
 	
 	/// <summary>
@@ -485,7 +485,7 @@ public partial class SoundManager : Singleton<SoundManager> {
         if (gO == null)
             return;
         
-        StopSFXObject(gO.audio);
+        StopSFXObject(gO.GetComponent<AudioSource>());
     }
 	
 	/// <summary>
@@ -625,12 +625,12 @@ public partial class SoundManager : Singleton<SoundManager> {
         if ((clip == null) || (gO == null))
             return null;
 		
-		if (gO.audio == null)
+		if (gO.GetComponent<AudioSource>() == null)
             gO.AddComponent<AudioSource>();
 		
-		Instance.CheckInsertionIntoUnownedSFXObjects(gO.audio);
+		Instance.CheckInsertionIntoUnownedSFXObjects(gO.GetComponent<AudioSource>());
 		
-		return Instance.PlaySFXLoopOn(gO.audio, clip, tillDestroy, volume, pitch, maxDuration, runOnEndFunction, duckingSetting, duckVolume, duckPitch);
+		return Instance.PlaySFXLoopOn(gO.GetComponent<AudioSource>(), clip, tillDestroy, volume, pitch, maxDuration, runOnEndFunction, duckingSetting, duckVolume, duckPitch);
     }
 	
 	/// <summary>
@@ -686,12 +686,12 @@ public partial class SoundManager : Singleton<SoundManager> {
         if ((!SoundManager.ClipNameIsValid(clipName)) || (gO == null))
             return null;
 		
-		if (gO.audio == null)
+		if (gO.GetComponent<AudioSource>() == null)
             gO.AddComponent<AudioSource>();
 		
-		Instance.CheckInsertionIntoUnownedSFXObjects(gO.audio);
+		Instance.CheckInsertionIntoUnownedSFXObjects(gO.GetComponent<AudioSource>());
 		
-		return Instance.PlaySFXLoopOn(gO.audio, SoundManager.Load(clipName), tillDestroy, volume, pitch, maxDuration, runOnEndFunction, duckingSetting, duckVolume, duckPitch);
+		return Instance.PlaySFXLoopOn(gO.GetComponent<AudioSource>(), SoundManager.Load(clipName), tillDestroy, volume, pitch, maxDuration, runOnEndFunction, duckingSetting, duckVolume, duckPitch);
     }
 	
 	/// <summary>
@@ -797,7 +797,7 @@ public partial class SoundManager : Singleton<SoundManager> {
 		float newVolume = ignoreMaxSFXVolume ? setVolume : (setVolume * Instance.maxSFXVolume);
 		
 		foreach(GameObject sfxObject in sfxObjects)
-			sfxObject.audio.volume = newVolume;
+			sfxObject.GetComponent<AudioSource>().volume = newVolume;
 	}
 	
 	/// <summary>
@@ -830,7 +830,7 @@ public partial class SoundManager : Singleton<SoundManager> {
 	public static void SetPitchSFX(float setPitch, params GameObject[] sfxObjects)
 	{
 		foreach(GameObject sfxObject in sfxObjects)
-			sfxObject.audio.pitch = setPitch;
+			sfxObject.GetComponent<AudioSource>().pitch = setPitch;
 	}
 	
 	/// <summary>
@@ -1108,26 +1108,26 @@ public partial class SoundManager : Singleton<SoundManager> {
 	/// </summary>
 	public static void ResetSFXObject(GameObject sfxObj)
 	{
-		if(sfxObj.audio == null)
+		if(sfxObj.GetComponent<AudioSource>() == null)
 			return;
 		
-		sfxObj.audio.mute = false;
-		sfxObj.audio.bypassEffects = false;
-		sfxObj.audio.playOnAwake = false;
-		sfxObj.audio.loop = false;
+		sfxObj.GetComponent<AudioSource>().mute = false;
+		sfxObj.GetComponent<AudioSource>().bypassEffects = false;
+		sfxObj.GetComponent<AudioSource>().playOnAwake = false;
+		sfxObj.GetComponent<AudioSource>().loop = false;
 		
-		sfxObj.audio.priority = 128;
-		sfxObj.audio.volume = 1f;
-		sfxObj.audio.pitch = 1f;
+		sfxObj.GetComponent<AudioSource>().priority = 128;
+		sfxObj.GetComponent<AudioSource>().volume = 1f;
+		sfxObj.GetComponent<AudioSource>().pitch = 1f;
 		
-		sfxObj.audio.dopplerLevel = 1f;
-		sfxObj.audio.rolloffMode = AudioRolloffMode.Logarithmic;
-		sfxObj.audio.minDistance = 1f;
-		sfxObj.audio.panLevel = 1f;
-		sfxObj.audio.spread = 0f;
-		sfxObj.audio.maxDistance = 500f;
+		sfxObj.GetComponent<AudioSource>().dopplerLevel = 1f;
+		sfxObj.GetComponent<AudioSource>().rolloffMode = AudioRolloffMode.Logarithmic;
+		sfxObj.GetComponent<AudioSource>().minDistance = 1f;
+		sfxObj.GetComponent<AudioSource>().panStereo = 1f;
+		sfxObj.GetComponent<AudioSource>().spread = 0f;
+		sfxObj.GetComponent<AudioSource>().maxDistance = 500f;
 		
-		sfxObj.audio.pan = 0f;
+		sfxObj.GetComponent<AudioSource>().panStereo = 0f;
 	}
 	
 	public static void Crossfade(float duration, AudioSource fromSource, AudioSource toSource, SongCallBack runOnEndFunction=null)
@@ -1137,7 +1137,7 @@ public partial class SoundManager : Singleton<SoundManager> {
 	
 	public static void Crossfade(float duration, GameObject fromSFXObject, GameObject toSFXObject, SongCallBack runOnEndFunction=null)
 	{
-		Crossfade(duration, fromSFXObject.audio, toSFXObject.audio, runOnEndFunction);
+		Crossfade(duration, fromSFXObject.GetComponent<AudioSource>(), toSFXObject.GetComponent<AudioSource>(), runOnEndFunction);
 	}
 	
 	public static void CrossIn(float duration, AudioSource source, SongCallBack runOnEndFunction=null)
@@ -1147,7 +1147,7 @@ public partial class SoundManager : Singleton<SoundManager> {
 	
 	public static void CrossIn(float duration, GameObject sfxObject, SongCallBack runOnEndFunction=null)
 	{
-		CrossIn(duration, sfxObject.audio, runOnEndFunction);
+		CrossIn(duration, sfxObject.GetComponent<AudioSource>(), runOnEndFunction);
 	}
 	
 	public static void CrossOut(float duration, AudioSource source, SongCallBack runOnEndFunction=null)
@@ -1157,6 +1157,6 @@ public partial class SoundManager : Singleton<SoundManager> {
 	
 	public static void CrossOut(float duration, GameObject sfxObject, SongCallBack runOnEndFunction=null)
 	{
-		CrossOut(duration, sfxObject.audio, runOnEndFunction);
+		CrossOut(duration, sfxObject.GetComponent<AudioSource>(), runOnEndFunction);
 	}
 }

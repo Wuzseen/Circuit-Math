@@ -192,12 +192,12 @@ public partial class SoundManager : Singleton<SoundManager> {
 		Instance.maxMusicVolume = setVolume * Instance.maxVolume;
 		
 		if(float.IsNaN(currentPercentageOfVolume1) || float.IsInfinity(currentPercentageOfVolume1))
-			if(Instance.audios[0].isPlaying)
+			if(Instance.GetComponents<AudioSource>()[0].isPlaying)
 				currentPercentageOfVolume1 = 1f;
 			else
 				currentPercentageOfVolume1 = 0f;
 		if(float.IsNaN(currentPercentageOfVolume2) || float.IsInfinity(currentPercentageOfVolume2))
-			if(Instance.audios[1].isPlaying)
+			if(Instance.GetComponents<AudioSource>()[1].isPlaying)
 				currentPercentageOfVolume2 = 1f;
 			else
 				currentPercentageOfVolume2 = 0f;
@@ -219,7 +219,7 @@ public partial class SoundManager : Singleton<SoundManager> {
 	/// </summary>
 	public static void SetPitchMusic(float setPitch)
 	{
-		Instance.audios[0].pitch = Instance.audios[1].pitch = setPitch;
+		Instance.GetComponents<AudioSource>()[0].pitch = Instance.GetComponents<AudioSource>()[1].pitch = setPitch;
 	}
 	
 	/// <summary>
@@ -227,7 +227,7 @@ public partial class SoundManager : Singleton<SoundManager> {
 	/// </summary>
 	public static float GetPitchMusic()
 	{
-		return Instance.audios[0].pitch;
+		return Instance.GetComponents<AudioSource>()[0].pitch;
 	}
 	
 	/// <summary>

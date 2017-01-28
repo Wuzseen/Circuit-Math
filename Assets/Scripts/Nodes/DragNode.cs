@@ -47,7 +47,7 @@ public class DragNode : MonoBehaviour {
 
 	void Start () {
 //		((SphereCollider)this.collider).radius = 22f;
-		((BoxCollider)this.collider).size = new Vector3(66f,39f,.3f);
+		((BoxCollider)this.GetComponent<Collider>()).size = new Vector3(66f,39f,.3f);
 		scaleTween = GetComponent<TweenScale>();
 		scaleTween.to = this.transform.localScale * 1.2f;
 		scaleTween.duration = .3f;

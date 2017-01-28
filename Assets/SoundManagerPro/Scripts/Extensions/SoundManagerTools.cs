@@ -22,12 +22,12 @@ public static class SoundManagerTools {
 	
 	public static void make2D ( ref AudioSource theAudioSource )
 	{
-		theAudioSource.panLevel = 0f;
+		theAudioSource.panStereo = 0f;
 	}
 	
 	public static void make3D ( ref AudioSource theAudioSource )
 	{
-		theAudioSource.panLevel = 1f;
+		theAudioSource.panStereo = 1f;
 	}
 	
 #if !(UNITY_WP8 || UNITY_METRO)
